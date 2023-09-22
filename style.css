@@ -4,13 +4,23 @@
     font-family: 'Rubik';
 }
 
-#pokedex {
+.pokedex {
     color: white;
-    background-color: rgba(215,31,55,1);
+    background-color: rgb(251,108,108);
     height: 100px;
+    width: 150px;
+    border-radius: 10px;
+    display: flex;
+    
 }
 
-.atf_img {
+.menu-bar {
+    color: white;
+    background-color: rgba(215,31,55,1);
+    height: 80px;
+}
+
+.atf-img {
 background-color: white;
 height: 100vh;
 background-image: url("./img/pokedex_backround.svg");

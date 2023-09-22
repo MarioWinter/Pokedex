@@ -14,5 +14,50 @@
             <path d="M3135.04,1064.19c0.223,-0.668 0.445,-1.336 0.223,-2.004c-0.223,-0.668 -0.668,-1.113 -1.336,-1.558c-115.09,-58.77 -191.892,-170.744 -205.248,-299.859c-0,-0.668 -0.446,-1.336 -0.891,-1.781c-0.445,-0.445 -1.336,-0.668 -2.003,-0.445l-16.474,2.449c-1.335,0.222 -2.226,1.335 -2.226,2.671c14.247,136.016 95.278,254.001 216.602,316.109c0.445,0.223 0.668,0.223 1.113,0.223c0.89,0 1.781,-0.445 2.226,-1.336l8.014,-14.469Z" style="fill:rgb(128,128,128);fill-rule:nonzero;"/>
             <path d="M3698.47,631.659c-34.951,-152.044 -156.274,-271.142 -308.986,-303.42c-0.668,-0.223 -1.336,-0 -2.004,0.445c-0.668,0.445 -0.89,0.89 -1.113,1.558l-3.339,16.251c-0.223,1.336 0.668,2.671 2.004,2.894c144.92,30.498 259.788,143.585 292.735,288.06c0.222,0.668 0.667,1.336 1.113,1.558c0.445,0.223 0.89,0.445 1.335,0.445c0.223,0 0.446,0 0.668,-0.222l15.806,-4.898c1.335,0 2.003,-1.335 1.781,-2.671Z" style="fill:rgb(128,128,128);fill-rule:nonzero;"/>
         </g>
+        <g>
+            <g>
+                <circle cx="410.612" cy="1449.3" r="20.447" style="fill:rgb(128,128,128);fill-opacity:0.3;"/>
+                <circle cx="493.833" cy="1449.3" r="20.447" style="fill:rgb(128,128,128);fill-opacity:0.3;"/>
+                <use xlink:href="#_Image1" x="556.608" y="1428.85" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="639.829" y="1428.85" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="723.051" y="1428.85" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="806.272" y="1428.85" width="41px" height="41px"/>
+            </g>
+            <g>
+                <circle cx="410.612" cy="1520.32" r="20.447" style="fill:rgb(128,128,128);fill-opacity:0.3;"/>
+                <circle cx="493.833" cy="1520.32" r="20.447" style="fill:rgb(128,128,128);fill-opacity:0.3;"/>
+                <use xlink:href="#_Image1" x="556.608" y="1499.88" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="639.829" y="1499.88" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="723.051" y="1499.88" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="806.272" y="1499.88" width="41px" height="41px"/>
+            </g>
+            <g>
+                <circle cx="410.612" cy="1591.35" r="20.447" style="fill:rgb(128,128,128);fill-opacity:0.3;"/>
+                <circle cx="493.833" cy="1591.35" r="20.447" style="fill:rgb(128,128,128);fill-opacity:0.3;"/>
+                <use xlink:href="#_Image1" x="556.608" y="1570.9" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="639.829" y="1570.9" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="723.051" y="1570.9" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="806.272" y="1570.9" width="41px" height="41px"/>
+            </g>
+            <g>
+                <circle cx="410.612" cy="1662.37" r="20.447" style="fill:rgb(128,128,128);fill-opacity:0.3;"/>
+                <circle cx="493.833" cy="1662.37" r="20.447" style="fill:rgb(128,128,128);fill-opacity:0.3;"/>
+                <use xlink:href="#_Image1" x="556.608" y="1641.93" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="639.829" y="1641.93" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="723.051" y="1641.93" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="806.272" y="1641.93" width="41px" height="41px"/>
+            </g>
+            <g>
+                <circle cx="410.612" cy="1733.4" r="20.447" style="fill:rgb(128,128,128);fill-opacity:0.3;"/>
+                <circle cx="493.833" cy="1733.4" r="20.447" style="fill:rgb(128,128,128);fill-opacity:0.3;"/>
+                <use xlink:href="#_Image1" x="556.608" y="1712.95" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="639.829" y="1712.95" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="723.051" y="1712.95" width="41px" height="41px"/>
+                <use xlink:href="#_Image1" x="806.272" y="1712.95" width="41px" height="41px"/>
+            </g>
+        </g>
     </g>
+    <defs>
+        <image id="_Image1" width="41px" height="41px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAApCAYAAACoYAD2AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACc0lEQVRYhdWZO28TQRRGj4cYHAUko7yIAwVdEE26tLfid90fRnE7JAqKFCF9SBTyQJBNZDvBMsXs2uv1epN1Nt7hSJa8D8vHM7Mzcz83mBNVXQLWgTVgGWgBL4DnwC3Qi19d4By4UNXBPN/VKCnWALaBTiznSnx8gJf9AfxU1WHlkqr6BtgBXpYQm8Uf4EBVLx9y872SqroC7AKvHymWxxmwr6q9opueFV1U1XVgD1ipUCzNCtARkUsz68+6aaakqr7Ht2DhD6mAJeCdiNyYWZR3Q65ALPiRkg/WI2gAWyISmdl19uKUZNzFuyxOMM2miJxlu35CMn5I9rLnF4gDNkTkxMwG6ZNpdoHmQrWmWcYPtREjyXgefIppZh46qtpODhyMVpKd2pTy+ZC8SVpym2pWkipZVdU1GEt2apQpogPQiHcznyi3WVgUfeCzw2+3QhQEv/VrO/yWK2TWHH5eCpmWw++oQ6bl8P0eMi2Hr0lCpunwRVPI3Dp8RRcyvf9Gslu3xT10Hb4WDplzB1zgC/cQ6arqlYujj1Bb8xTGG4vjGkWKOIax5Ck++giJU1X9DePyYQh8r1VpkiFwmBykC7ELfDYTAkeqOgoJspvdfeqf3CPgIH1iIgQws78i8gt4Sz0Jxh3wRVVnJxgAZtYTkRtga1FmMUPgq6peZS/kxilmFolIBGyymPrnDi+YG6rOzHzM7FpEzoENnjZ6ifBdPNWCCYXBlJn1ReQEXwe9qlhuCBwB37JjMEuZzLyNjz5WH+cG+MXjMD3NFFH6CY6jjw5+vJapj7qx3HGykjyUuaeZOORq4+v2VurVJOd/nKIxdx//ACS0up7uoiIxAAAAAElFTkSuQmCC"/>
+    </defs>
 </svg>

@@ -6,6 +6,21 @@
 
 #pokedex {
     color: white;
-    background-color: red;
-    height: 100vh;
+    background-color: rgba(215,31,55,1);
+    height: 100px;
+}
+
+.atf_img {
+background-color: white;
+height: 100vh;
+background-image: url("./img/pokedex_backround.svg");
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+background-attachment: fixed;
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+z-index: -10;
 }

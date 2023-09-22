@@ -3,3 +3,9 @@
     margin: 0px;
     font-family: 'Rubik';
 }
+
+#pokedex {
+    color: white;
+    background-color: red;
+    height: 100vh;
+}

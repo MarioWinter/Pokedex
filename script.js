@@ -1,12 +1,20 @@
-const API_KEY = '';
+
+
+async function loadAllPokemonData() {
+
+    for (let i = 1; i <= 151; i++) { // Hier habe ich 151 Pokémon als Beispiel genommen
+        let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+        let response = await fetch(url);
+        let PokeData = await response.json();
+        
+    }
+  }
+
 
 async function loadPokemon() {
-    let url = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=BTC&to_currency=USD&apikey=${API_KEY}`;
+    let url = `https://pokeapi.co/api/v2/pokemon/bulbasaur`;
     let response = await fetch(url);
     let responseAsJason = await response.json();
-    
-    
 
-
-    document.getElementById('current_course').innerHTML = `<b>${responseAsJason['name']} $</b>`;
+    document.getElementById('pokedex').innerHTML = `<b>${responseAsJason['name']}</b>`;
 }

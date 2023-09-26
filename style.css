@@ -55,13 +55,18 @@
     align-items: center;
 }
 
-
+.pokedex-content-bkrlogo {
+    bottom: 5px;
+    right: -10px;
+    position: absolute;
+}
 
 
 .pokedex-content {
     background-color: rgb(251,108,108);
     border-radius: 20px;
     width: 300px;
+
 }
 
 
@@ -69,6 +74,7 @@
     padding: 10px;
     height: 30vh;
     color: white;
+    position: relative;
 }
 
 
@@ -86,6 +92,8 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    position: relative;
+    z-index: 1;
 }
 
 

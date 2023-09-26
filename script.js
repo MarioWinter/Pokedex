@@ -12,25 +12,30 @@ async function loadAllPokemonData() {
 
 
 async function loadPokemon() {
-    let url = `https://pokeapi.co/api/v2/pokemon/bulbasaur`;
+    let j = 1;
+    let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
     let response = await fetch(url);
     let responseAsJason = await response.json();
-    pokemonTypes(responseAsJason);
 
-
-    document.getElementById('pokedex-container').innerHTML = pokemonBigContainer(responseAsJason);
-    document.getElementById('pokedex').innerHTML = pokemonSmallContainer(responseAsJason);
+    document.getElementById('pokedex-container').innerHTML = pokemonBigContainer(responseAsJason, j);
+    document.getElementById('pokedex').innerHTML = pokemonSmallContainer(responseAsJason, j);
+    pokemonTypes(responseAsJason, j);
 }
 
-function pokemonTypes(responseAsJason) {
+function pokemonTypes(responseAsJason, index) {
     let types = responseAsJason['types'];
     for (let i = 0; i < types.length; i++) {
         let type = types[i];
-        console.log(type.type.name);
+        let pokemonType = type.type.name;
+        if (pokemonType !== "") {
+            document.getElementById(`pokeType${index}`).innerHTML += `<span class="pokemon-type">${pokemonType}</span>`;
+
+        }
     }
 }
 
-function pokemonBigContainer(responseAsJason) {
+function pokemonBigContainer(responseAsJason, index) {
+    let name = capitalizeFirstLetter(responseAsJason['name']);
     return `
     <div class="pokedex-content">
         <div class="pokedex-header">
@@ -40,9 +45,14 @@ function pokemonBigContainer(responseAsJason) {
                 </svg>
             </div>
             <div>
-                <b>${responseAsJason['name']}</b>
+                <h2>${name}</h2>
             </div>
-            <img class="pokemon-img-big" src="${responseAsJason['sprites']['other']['dream_world']['front_default']}" alt="Pokemon Image">
+            <div class="type-container" id="pokeType${index}">
+
+            </div>
+            <div class="poke-img-container">
+                <img class="pokemon-img-big" src="${responseAsJason['sprites']['other']['dream_world']['front_default']}" alt="Pokemon Image">
+            </div>
         </div>
         <div id="pokemon-info"></div>
     </div>
@@ -52,5 +62,10 @@ function pokemonBigContainer(responseAsJason) {
 
 function pokemonSmallContainer(responseAsJason) {
     return ``;
+}
+
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 

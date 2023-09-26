@@ -8,18 +8,27 @@ async function loadAllPokemonData() {
         let PokeData = await response.json();
         
     }
-  }
+}
 
 
 async function loadPokemon() {
     let url = `https://pokeapi.co/api/v2/pokemon/bulbasaur`;
     let response = await fetch(url);
     let responseAsJason = await response.json();
+    pokemonTypes(responseAsJason);
+
 
     document.getElementById('pokedex-container').innerHTML = pokemonBigContainer(responseAsJason);
     document.getElementById('pokedex').innerHTML = pokemonSmallContainer(responseAsJason);
 }
 
+function pokemonTypes(responseAsJason) {
+    let types = responseAsJason['types'];
+    for (let i = 0; i < types.length; i++) {
+        let type = types[i];
+        console.log(type.type.name);
+    }
+}
 
 function pokemonBigContainer(responseAsJason) {
     return `

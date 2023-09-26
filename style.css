@@ -30,10 +30,6 @@
 }
   
 
-.d-none {
-    display: none;
-}
-
 .edit-bg {
     background-color: rgba(0, 0, 0, 0.1);
     position: absolute;
@@ -85,9 +81,18 @@
     border-radius: 20px;
 }
 
+.pokemon-img-big {
+    height: 50px;
+}
+
 
 .menu-bar {
     color: white;
     background-color: rgba(215,31,55,1);
     height: 80px;
+}
+
+
+.d-none {
+    display: none;
 }

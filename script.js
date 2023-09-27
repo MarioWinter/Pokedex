@@ -12,7 +12,7 @@ async function loadAllPokemonData() {
 
 
 async function loadPokemon() {
-    let j = 4;
+    let j = 65;
     let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
     let response = await fetch(url);
     let responseAsJason = await response.json();
@@ -126,10 +126,12 @@ function convertPokeNumer(responseAsJason) {
 
 function cardColor(responseAsJason, index) {
     let pokemonType = responseAsJason['types'][0].type.name;
-    if (pokemonType = "grass") {
+    if (pokemonType == "grass") {
         document.getElementById(`pokeContent${index}`).classList.add('card-green');
-    } else if (pokemonType = "fire") {
+    } else if (pokemonType == "fire") {
         document.getElementById(`pokeContent${index}`).classList.add('card-red');
+    } else if (pokemonType == "psychic") {
+        document.getElementById(`pokeContent${index}`).classList.add('card-violet');
     }
 }
 

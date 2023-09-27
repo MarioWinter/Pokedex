@@ -18,6 +18,14 @@
     margin-top: 10px;
 }
 
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
 .atf-img {
     background-color: rgb(247,248,252);
     height: 100vh;
@@ -176,5 +184,35 @@
 }
 
 .card-violet {
-    background-color: rgb(241,218,237);
+    background-color: rgb(255, 132, 234);
 }
+
+.info-header-container {
+    color: rgb(180,180,180);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.info-header-menu {
+    padding-bottom: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(180,180,180);
+}
+
+
+.info-header-menu:hover {
+    padding-bottom: 5px;
+    color: black;
+    border-bottom: 1px solid black;
+}
+
+
+.info-header-selected {
+    padding-bottom: 5px;
+    color: black;
+    border-bottom: 1px solid black;
+}
+

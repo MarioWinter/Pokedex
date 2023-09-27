@@ -12,12 +12,13 @@ async function loadAllPokemonData() {
 
 
 async function loadPokemon() {
-    let j = 65;
+    let j = 1;
     let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
     let response = await fetch(url);
     let responseAsJason = await response.json();
 
     document.getElementById('pokedex-container').innerHTML = pokemonBigContainer(responseAsJason, j);
+    document.getElementById(`infoHeader${j}`).innerHTML = pokemonBigInfoHeader(j);
     document.getElementById('pokedex').innerHTML = pokemonSmallContainer(responseAsJason, j);
     document.getElementById(`pokeNumber${j}`).innerHTML = convertPokeNumer(responseAsJason);
     pokemonTypes(responseAsJason, j);
@@ -93,9 +94,32 @@ function pokemonBigContainer(responseAsJason, index) {
                 <path d="M33.392,116.649c0.445,0.445 1.113,0.668 1.781,0.668c0.668,-0 1.335,-0.446 1.781,-0.891c45.19,-52.982 110.86,-83.479 180.538,-83.479c43.632,-0 86.151,12.021 123.327,34.504c1.113,0.668 2.449,0.446 3.339,-0.667l16.696,-22.262c0.446,-0.667 0.668,-1.335 0.446,-2.003c-0.223,-0.668 -0.446,-1.336 -1.113,-1.781c-42.742,-26.713 -92.162,-40.738 -142.695,-40.738c-78.359,0 -152.712,34.06 -204.135,93.497c-0.891,1.113 -0.891,2.449 0.222,3.339l19.813,19.813Z" fill="url(#grad)" />
             </svg>
         </div>
-        <div id="pokemon-info"></div>
+
+        <div id="pokemon-info">
+            <div class="info-header-container mt-30" id="infoHeader${index}"></div>
+        </div>
     </div>
     `;
+}
+
+
+function pokemonBigInfoHeader(index) {
+    return `
+        <div id="about${index}" onclick="addHeaderMenuSelection('about${index}', ${index})" class="info-header-menu">About</div>
+        <div id="baseStats${index}" onclick="addHeaderMenuSelection('baseStats${index}', ${index})" class="info-header-menu">Base Stats</div>
+        <div id="evelution${index}" onclick="addHeaderMenuSelection('evelution${index}', ${index})" class="info-header-menu">Evelution</div>
+        <div id="moves${index}" onclick="addHeaderMenuSelection('moves${index}', ${index})" class="info-header-menu">Moves</div>
+    `;
+}
+
+
+function addHeaderMenuSelection(ID, index) {
+    document.getElementById(`about${index}`).classList.remove('info-header-selected');
+    document.getElementById(`baseStats${index}`).classList.remove('info-header-selected');
+    document.getElementById(`evelution${index}`).classList.remove('info-header-selected');
+    document.getElementById(`moves${index}`).classList.remove('info-header-selected');
+
+    document.getElementById(ID).classList.add('info-header-selected');
 }
 
 
@@ -108,6 +132,7 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 
 }
+
 
 function convertPokeNumer(responseAsJason) {
     let id = responseAsJason['id'];
@@ -124,6 +149,7 @@ function convertPokeNumer(responseAsJason) {
     }
 }
 
+
 function cardColor(responseAsJason, index) {
     let pokemonType = responseAsJason['types'][0].type.name;
     if (pokemonType == "grass") {
@@ -132,6 +158,8 @@ function cardColor(responseAsJason, index) {
         document.getElementById(`pokeContent${index}`).classList.add('card-red');
     } else if (pokemonType == "psychic") {
         document.getElementById(`pokeContent${index}`).classList.add('card-violet');
+    } else if (pokemonType == "electric") {
+        document.getElementById(`pokeContent${index}`).classList.add('card-yellow');
     }
 }
 

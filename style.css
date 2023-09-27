@@ -67,7 +67,6 @@
 
 
 .pokedex-content {
-    background-color: rgb(251,108,108);
     border-radius: 20px;
     width: 300px;
 
@@ -158,4 +157,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.card-green {
+    background-color: rgb(72,208,175);
+}
+
+.card-red {
+    background-color: rgb(251,108,108);
 }

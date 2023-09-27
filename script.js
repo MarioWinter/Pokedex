@@ -12,7 +12,7 @@ async function loadAllPokemonData() {
 
 
 async function loadPokemon() {
-    let j = 2;
+    let j = 4;
     let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
     let response = await fetch(url);
     let responseAsJason = await response.json();
@@ -21,6 +21,7 @@ async function loadPokemon() {
     document.getElementById('pokedex').innerHTML = pokemonSmallContainer(responseAsJason, j);
     document.getElementById(`pokeNumber${j}`).innerHTML = convertPokeNumer(responseAsJason);
     pokemonTypes(responseAsJason, j);
+    cardColor(responseAsJason, j);
 
 }
 
@@ -57,7 +58,7 @@ function likeHandleClick() {
 function pokemonBigContainer(responseAsJason, index) {
     let name = capitalizeFirstLetter(responseAsJason['name']);
     return `
-    <div class="pokedex-content">
+    <div id="pokeContent${index}" class="pokedex-content">
         <div class="pokedex-header">
             <div class="next-like-button-container">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20">
@@ -120,6 +121,15 @@ function convertPokeNumer(responseAsJason) {
     } else if (id > 100) {
         let num = `#${id}`;
         return num;
+    }
+}
+
+function cardColor(responseAsJason, index) {
+    let pokemonType = responseAsJason['types'][0].type.name;
+    if (pokemonType = "grass") {
+        document.getElementById(`pokeContent${index}`).classList.add('card-green');
+    } else if (pokemonType = "fire") {
+        document.getElementById(`pokeContent${index}`).classList.add('card-red');
     }
 }
 

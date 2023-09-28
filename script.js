@@ -25,6 +25,7 @@ async function loadPokemon() {
     pokemonTypes(responseAsJason, j);
     cardColor(responseAsJason, j);
     pokeMenuSelection(responseAsJason, j);
+    pokemonAbilities(responseAsJason, j);
 
 }
 
@@ -36,6 +37,18 @@ function pokemonTypes(responseAsJason, index) {
         let pokemonType = type.type.name;
         if (pokemonType !== "") {
             document.getElementById(`pokeType${index}`).innerHTML += `<span class="pokemon-type">${pokemonType}</span>`;
+
+        }
+    }
+}
+
+function pokemonAbilities(responseAsJason, index) {
+    let abilities = responseAsJason['abilities'];
+    for (let i = 0; i < abilities.length; i++) {
+        let ability = abilities[i];
+        let pokemonAbility = ability.ability.name;
+        if (pokemonAbility !== "") {
+            document.getElementById(`abilities${index}`).innerHTML += `<span class="card-info-value">${capitalizeFirstLetter(pokemonAbility)}</span>`;
 
         }
     }
@@ -100,7 +113,7 @@ function pokemonBigContainer(responseAsJason, index) {
             <div class="info-header-container mt-30" id="infoHeader${index}">
             </div>
 
-            <div id="infoContainer${index}" class="d-flex-between">
+            <div id="infoContainer${index}" class="">
 
             </div>
 
@@ -131,18 +144,26 @@ function addHeaderMenuSelection(ID, index) {
 
 
 function pokeMenuSelection(responseAsJason, j) {
-    document.getElementById(`infoContainer${j}`).innerHTML += infoContentAbout(responseAsJason);
+    document.getElementById(`infoContainer${j}`).innerHTML += infoContentAbout(responseAsJason, j);
     document.getElementById(`infoContainer${j}`).innerHTML += infoContentBestStats(responseAsJason);
     
 
 }
 
 
-function infoContentAbout(responseAsJason) {
+function infoContentAbout(responseAsJason, index) {
     return `
-    <div class="card-content card-width">
-        <div class="grey-text mr-30 mt-10">Height</div>
-        <div class="black-text mt-10">${responseAsJason['height']} lb</div>
+    <div class="card-content">
+        <span class="mt-20 card-info-key">Height</span>
+        <span class="mt-20 card-info-value">${fixWidth(responseAsJason['height'])} cm</span>
+    </div>
+    <div class="card-content">
+        <span class="card-info-key">Weight</span>
+        <span class="card-info-value">${fixWidth(responseAsJason['weight'])} Kg</span>
+    </div>
+    <div id=abilities${index} class="card-content">
+        <span class="card-info-key">Abilities</span>
+        
     </div>
     `;
 }
@@ -150,9 +171,9 @@ function infoContentAbout(responseAsJason) {
 
 function infoContentBestStats(responseAsJason) {
     return `
-    <div class="d-flex-between card-width d-none">
+    <div class="d-flex-between d-none">
         <div class="grey-text">Height</div>
-        <div class="black-text">${responseAsJason['height']} lb</div>
+        <div class="black-text">${responseAsJason['height']} ft</div>
     </div>
     `;
 }
@@ -196,5 +217,10 @@ function cardColor(responseAsJason, index) {
     } else if (pokemonType == "electric") {
         document.getElementById(`pokeContent${index}`).classList.add('card-yellow');
     }
+}
+
+function fixWidth(width) {
+    let newWidth = width / 10;
+    return newWidth;
 }
 

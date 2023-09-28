@@ -1,4 +1,5 @@
 let isLiked = false;
+let infoMenuSelection = "about";
 
 async function loadAllPokemonData() {
 
@@ -23,8 +24,10 @@ async function loadPokemon() {
     document.getElementById(`pokeNumber${j}`).innerHTML = convertPokeNumer(responseAsJason);
     pokemonTypes(responseAsJason, j);
     cardColor(responseAsJason, j);
+    pokeMenuSelection(responseAsJason, j);
 
 }
+
 
 function pokemonTypes(responseAsJason, index) {
     let types = responseAsJason['types'];
@@ -37,8 +40,6 @@ function pokemonTypes(responseAsJason, index) {
         }
     }
 }
-
-
 
 
 function likeHandleClick() {
@@ -96,7 +97,13 @@ function pokemonBigContainer(responseAsJason, index) {
         </div>
 
         <div id="pokemon-info">
-            <div class="info-header-container mt-30" id="infoHeader${index}"></div>
+            <div class="info-header-container mt-30" id="infoHeader${index}">
+            </div>
+
+            <div id="infoContainer${index}" class="d-flex-between">
+
+            </div>
+
         </div>
     </div>
     `;
@@ -105,7 +112,7 @@ function pokemonBigContainer(responseAsJason, index) {
 
 function pokemonBigInfoHeader(index) {
     return `
-        <div id="about${index}" onclick="addHeaderMenuSelection('about${index}', ${index})" class="info-header-menu">About</div>
+        <div id="about${index}" onclick="addHeaderMenuSelection('about${index}', ${index})" class="info-header-menu info-header-selected">About</div>
         <div id="baseStats${index}" onclick="addHeaderMenuSelection('baseStats${index}', ${index})" class="info-header-menu">Base Stats</div>
         <div id="evelution${index}" onclick="addHeaderMenuSelection('evelution${index}', ${index})" class="info-header-menu">Evelution</div>
         <div id="moves${index}" onclick="addHeaderMenuSelection('moves${index}', ${index})" class="info-header-menu">Moves</div>
@@ -120,6 +127,34 @@ function addHeaderMenuSelection(ID, index) {
     document.getElementById(`moves${index}`).classList.remove('info-header-selected');
 
     document.getElementById(ID).classList.add('info-header-selected');
+}
+
+
+function pokeMenuSelection(responseAsJason, j) {
+    document.getElementById(`infoContainer${j}`).innerHTML += infoContentAbout(responseAsJason);
+    document.getElementById(`infoContainer${j}`).innerHTML += infoContentBestStats(responseAsJason);
+    
+
+}
+
+
+function infoContentAbout(responseAsJason) {
+    return `
+    <div class="card-content card-width">
+        <div class="grey-text mr-30 mt-10">Height</div>
+        <div class="black-text mt-10">${responseAsJason['height']} lb</div>
+    </div>
+    `;
+}
+
+
+function infoContentBestStats(responseAsJason) {
+    return `
+    <div class="d-flex-between card-width d-none">
+        <div class="grey-text">Height</div>
+        <div class="black-text">${responseAsJason['height']} lb</div>
+    </div>
+    `;
 }
 
 

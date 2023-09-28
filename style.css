@@ -4,15 +4,11 @@
     font-family: 'Rubik';
 }
 
-/* :root {
-    --background-color: rgba(191, 134, 255, 0.5);
-    --hover-color: rgba(191, 134, 255, 1);
+:root {
+    --big-crad-witdh: 300px;
+    --text-grey: rgb(180,180,180);
 
-    --accent-color: rgb(0 0 0 / 14%);
-    --hover-accent-color: rgb(0 0 0 / 60%);
-
-    --font-size: 16px;
-} */
+}
 
 .mt-10 {
     margin-top: 10px;
@@ -25,6 +21,19 @@
 .mt-30 {
     margin-top: 30px;
 }
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.mr-20 {
+    margin-right: 20px;
+}
+
+.mr-30 {
+    margin-right: 30px
+}
+
 
 .atf-img {
     background-color: rgb(247,248,252);
@@ -76,7 +85,7 @@
 
 .pokedex-content {
     border-radius: 20px;
-    width: 300px;
+    width: var(--big-crad-witdh);
 
 }
 
@@ -143,9 +152,10 @@
 }
 
 
-.d-none {
-    display: none;
-}
+.d-none { 
+    display: none !important;
+} 
+
 
 /* CSS für die Herzfüllung-Animation */
 @keyframes fillHeart {
@@ -166,6 +176,20 @@
     justify-content: space-between;
     align-items: center;
 }
+
+
+.card-width {
+    width: var(--big-crad-witdh);
+}
+
+.grey-text {
+    color: var(--text-grey);
+}
+
+.black-text {
+    color: black;
+}
+
 
 .card-green {
     background-color: rgb(72,208,175);
@@ -188,7 +212,7 @@
 }
 
 .info-header-container {
-    color: rgb(180,180,180);
+    color: var(--text-grey);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -199,14 +223,13 @@
     padding-bottom: 5px;
     cursor: pointer;
     text-decoration: none;
-    color: rgb(180,180,180);
+    color: var(--text-grey);
 }
 
 
 .info-header-menu:hover {
     padding-bottom: 5px;
     color: black;
-    border-bottom: 1px solid black;
 }
 
 
@@ -214,5 +237,11 @@
     padding-bottom: 5px;
     color: black;
     border-bottom: 1px solid black;
+}
+
+.card-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 

@@ -12,7 +12,7 @@ async function loadAllPokemonData() {
 
 
 async function loadPokemon() {
-    let j = 1;
+    let j = 25;
     let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
     let response = await fetch(url);
     let responseAsJason = await response.json();
@@ -77,11 +77,36 @@ function addHeaderMenuSelection(ID, index) {
 }
 
 
-function pokeMenuSelection(responseAsJason, j) {
-    document.getElementById(`infoContainer${j}`).innerHTML += infoContentAbout(responseAsJason, j);
-    document.getElementById(`infoContainer${j}`).innerHTML += infoContentBestStats(responseAsJason);
-    
+function showInfoAbout(index) {
+    removeInfoContainer(index);
+    document.getElementById(`infoContainerAbout${index}`).classList.remove('d-none');
+}
 
+
+function showInfoBest_Stats(index) {
+    removeInfoContainer(index);
+    document.getElementById(`infoContainerBest_Stats${index}`).classList.remove('d-none');
+}
+
+
+function removeInfoContainer(index) {
+    document.getElementById(`infoContainerAbout${index}`).classList.add('d-none');
+    document.getElementById(`infoContainerBest_Stats${index}`).classList.add('d-none');
+
+}
+
+
+function pokeMenuSelection(responseAsJason, j) {
+    document.getElementById(`infoContainerAbout${j}`).innerHTML += infoContentAbout(responseAsJason, j);
+    bestStats(responseAsJason, j);
+    
+}
+
+function bestStats(responseAsJason, j) {
+    for (let i = 0; i < responseAsJason['stats'].length; i++) {
+        let stats = responseAsJason['stats'][i];
+        document.getElementById(`infoContainerBest_Stats${j}`).innerHTML += infoContentBestStats(stats);
+    }
 }
 
 

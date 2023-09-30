@@ -41,7 +41,10 @@ function pokemonBigContainer(responseAsJason, index) {
             <div class="info-header-container mt-30" id="infoHeader${index}">
             </div>
 
-            <div id="infoContainer${index}" class="">
+            <div id="infoContainerAbout${index}" class="">
+
+            </div>
+            <div id="infoContainerBest_Stats${index}" class="d-none">
 
             </div>
 
@@ -52,12 +55,13 @@ function pokemonBigContainer(responseAsJason, index) {
 
 function pokemonBigInfoHeader(index) {
     return `
-        <div id="about${index}" onclick="addHeaderMenuSelection('about${index}', ${index})" class="info-header-menu info-header-selected">About</div>
-        <div id="baseStats${index}" onclick="addHeaderMenuSelection('baseStats${index}', ${index})" class="info-header-menu">Base Stats</div>
-        <div id="evelution${index}" onclick="addHeaderMenuSelection('evelution${index}', ${index})" class="info-header-menu">Evelution</div>
-        <div id="moves${index}" onclick="addHeaderMenuSelection('moves${index}', ${index})" class="info-header-menu">Moves</div>
+        <div id="about${index}" onclick="addHeaderMenuSelection('about${index}', ${index}), showInfoAbout(${index})" class="info-header-menu info-header-selected">About</div>
+        <div id="baseStats${index}" onclick="addHeaderMenuSelection('baseStats${index}', ${index}), showInfoBest_Stats(${index})" class="info-header-menu">Base Stats</div>
+        <div id="evelution${index}" onclick="addHeaderMenuSelection('evelution${index}', ${index}), removeInfoContainer(${index})" class="info-header-menu">Evelution</div>
+        <div id="moves${index}" onclick="addHeaderMenuSelection('moves${index}', ${index}), removeInfoContainer(${index})" class="info-header-menu">Moves</div>
     `;
 }
+
 
 function infoContentAbout(responseAsJason, index) {
     return `
@@ -76,12 +80,12 @@ function infoContentAbout(responseAsJason, index) {
     `;
 }
 
-//noch nicht fertig ist nur ein test 28.09.23
-function infoContentBestStats(responseAsJason) {
+
+function infoContentBestStats(stats) {
     return `
-    <div class="d-flex-between d-none">
-        <div class="grey-text">Height</div>
-        <div class="black-text">${responseAsJason['height']} ft</div>
+    <div class="card-content">
+        <div class="card-info-key">${capitalizeFirstLetter(stats['stat'].name)}</div>
+        <div class="card-info-value">${stats['base_stat']}</div>
     </div>
     `;
 }

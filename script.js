@@ -70,7 +70,6 @@ function likeHandleClick() {
 function addHeaderMenuSelection(ID, index) {
     document.getElementById(`about${index}`).classList.remove('info-header-selected');
     document.getElementById(`baseStats${index}`).classList.remove('info-header-selected');
-    document.getElementById(`evelution${index}`).classList.remove('info-header-selected');
     document.getElementById(`moves${index}`).classList.remove('info-header-selected');
 
     document.getElementById(ID).classList.add('info-header-selected');

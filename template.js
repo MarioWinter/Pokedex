@@ -57,7 +57,6 @@ function pokemonBigInfoHeader(index) {
     return `
         <div id="about${index}" onclick="addHeaderMenuSelection('about${index}', ${index}), showInfoAbout(${index})" class="info-header-menu info-header-selected">About</div>
         <div id="baseStats${index}" onclick="addHeaderMenuSelection('baseStats${index}', ${index}), showInfoBest_Stats(${index})" class="info-header-menu">Base Stats</div>
-        <div id="evelution${index}" onclick="addHeaderMenuSelection('evelution${index}', ${index}), removeInfoContainer(${index})" class="info-header-menu">Evelution</div>
         <div id="moves${index}" onclick="addHeaderMenuSelection('moves${index}', ${index}), removeInfoContainer(${index})" class="info-header-menu">Moves</div>
     `;
 }
@@ -76,6 +75,10 @@ function infoContentAbout(responseAsJason, index) {
     <div id=abilities${index} class="card-content">
         <span class="card-info-key">Abilities</span>
         
+    </div>
+    <div class="card-content">
+        <span class="card-info-key">Experience</span>
+        <span class="card-info-value">${responseAsJason['base_experience']}</span>
     </div>
     `;
 }

@@ -1,9 +1,10 @@
 let isLiked = false;
+let j = 26;
 
 async function loadAllPokemonData() {
 
-    for (let i = 1; i <= 151; i++) { // Hier habe ich 151 Pokémon als Beispiel genommen
-        let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+    for (let i = 1; i <= 20; i++) { // Hier habe ich 151 Pokémon als Beispiel genommen
+        let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
         let response = await fetch(url);
         let PokeData = await response.json();
         
@@ -12,7 +13,6 @@ async function loadAllPokemonData() {
 
 
 async function loadPokemon() {
-    let j = 25;
     let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
     let response = await fetch(url);
     let responseAsJason = await response.json();
@@ -26,6 +26,18 @@ async function loadPokemon() {
     pokeMenuSelection(responseAsJason, j);
     pokemonAbilities(responseAsJason, j);
 
+}
+
+
+function nextCountUp(index) {
+    ++index;
+    loadPokemon();
+}
+
+
+function nextCountDown(index) {
+    --index;
+    loadPokemon();
 }
 
 
@@ -88,9 +100,16 @@ function showInfoBest_Stats(index) {
 }
 
 
+function showInfoMoves(index) {
+    removeInfoContainer(index);
+    document.getElementById(`infoContainerMoves${index}`).classList.remove('d-none');
+}
+
+
 function removeInfoContainer(index) {
     document.getElementById(`infoContainerAbout${index}`).classList.add('d-none');
     document.getElementById(`infoContainerBest_Stats${index}`).classList.add('d-none');
+    document.getElementById(`infoContainerMoves${index}`).classList.add('d-none');
 
 }
 
@@ -98,6 +117,7 @@ function removeInfoContainer(index) {
 function pokeMenuSelection(responseAsJason, j) {
     document.getElementById(`infoContainerAbout${j}`).innerHTML += infoContentAbout(responseAsJason, j);
     bestStats(responseAsJason, j);
+    moves(responseAsJason, j);
     
 }
 
@@ -105,6 +125,13 @@ function bestStats(responseAsJason, j) {
     for (let i = 0; i < responseAsJason['stats'].length; i++) {
         let stats = responseAsJason['stats'][i];
         document.getElementById(`infoContainerBest_Stats${j}`).innerHTML += infoContentBestStats(stats);
+    }
+}
+
+function moves(responseAsJason, j) {
+    for (let i = 0; i < responseAsJason['moves'].length; i++) {
+        let moves = responseAsJason['moves'][i];
+        document.getElementById(`infoContainerMoves${j}`).innerHTML += infoContentMoves(moves);
     }
 }
 

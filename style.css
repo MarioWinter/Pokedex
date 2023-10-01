@@ -199,6 +199,7 @@
 
 .info-header-menu {
     padding-bottom: 10px;
+    margin-bottom: 10px;
     cursor: pointer;
     text-decoration: none;
     color: var(--text-grey);
@@ -226,10 +227,10 @@
 
 .card-info-key {
     color: var(--text-grey);
-    margin-right: 30px;
+    margin-right: 40px;
     margin-top: 10px;
     font-size: 12px;
-    width: 20%;
+    width: 29%;
 }
 
 .card-info-value {
@@ -238,6 +239,24 @@
     margin-top: 10px;
     font-size: 12px;
 }
+
+.movesContent {
+    overflow: scroll;
+    height: 87%;
+    padding-bottom: 15px;
+}
+
+.button-effect {
+    padding: 2px 5px;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+
+.button-effect:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
 
 .mt-10 {
     margin-top: 10px;

@@ -74,7 +74,14 @@
     width: var(--big-crad-witdh);
     height: 50vh;
     overflow: hidden;
+}
 
+
+.pokedex-content-small {
+    border-radius: 20px;
+    width: var(--big-crad-witdh);
+    height: 20vh;
+    overflow: hidden;
 }
 
 

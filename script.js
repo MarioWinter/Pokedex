@@ -1,5 +1,5 @@
 let isLiked = false;
-let j = 74;
+let j = 1;
 
 async function loadAllPokemonData() {
 
@@ -23,6 +23,7 @@ async function loadPokemon() {
     document.getElementById(`infoHeader${j}`).innerHTML = pokemonBigInfoHeader(j);
     document.getElementById('pokedex').innerHTML = pokemonSmallContainer(responseAsJason, j);
     document.getElementById(`pokeNumber${j}`).innerHTML = convertPokeNumer(responseAsJason);
+    document.getElementById(`pokeNumberSmall${j}`).innerHTML = convertPokeNumer(responseAsJason);
     pokemonTypes(responseAsJason, j);
     cardColor(responseAsJason, j);
     pokeMenuSelection(responseAsJason, j);
@@ -62,7 +63,7 @@ function pokemonTypes(responseAsJason, index) {
         let pokemonType = type.type.name;
         if (pokemonType !== "") {
             document.getElementById(`pokeType${index}`).innerHTML += `<span class="pokemon-type">${pokemonType}</span>`;
-
+            document.getElementById(`pokeTypeSmall${index}`).innerHTML += `<div class="pokemon-type">${pokemonType}</div>`;
         }
     }
 }
@@ -176,34 +177,49 @@ function cardColor(responseAsJason, index) {
     let pokemonType = responseAsJason['types'][0].type.name;
     if (pokemonType == "grass") {
         document.getElementById(`pokeContent${index}`).classList.add('card-grass');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-grass');
     } else if (pokemonType == "fire") {
         document.getElementById(`pokeContent${index}`).classList.add('card-fire');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-fire');
     } else if (pokemonType == "psychic") {
         document.getElementById(`pokeContent${index}`).classList.add('card-psychic');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-psychic');
     } else if (pokemonType == "electric") {
         document.getElementById(`pokeContent${index}`).classList.add('card-electric');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-electric');
     } else if (pokemonType == "dragon") {
         document.getElementById(`pokeContent${index}`).classList.add('card-dragon');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-dragon');
     } else if (pokemonType == "ice") {
         document.getElementById(`pokeContent${index}`).classList.add('card-ice');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-ice');
     } else if (pokemonType == "normal") {
         document.getElementById(`pokeContent${index}`).classList.add('card-normal');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-normal');
     } else if (pokemonType == "water") {
         document.getElementById(`pokeContent${index}`).classList.add('card-water');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-water');
     } else if (pokemonType == "bug") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-bug');
+       document.getElementById(`pokeContent${index}`).classList.add('card-bug');
+       document.getElementById(`pokeContentSmall${index}`).classList.add('card-bug');
     } else if (pokemonType == "poison") {
         document.getElementById(`pokeContent${index}`).classList.add('card-poison');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-poison');
     } else if (pokemonType == "ground") {
         document.getElementById(`pokeContent${index}`).classList.add('card-ground');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-ground');
     } else if (pokemonType == "fairy") {
         document.getElementById(`pokeContent${index}`).classList.add('card-fairy');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-fairy');
     } else if (pokemonType == "fighting") {
         document.getElementById(`pokeContent${index}`).classList.add('card-fighting');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-fighting');
     } else if (pokemonType == "rock") {
         document.getElementById(`pokeContent${index}`).classList.add('card-rock');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-rock');
     } else if (pokemonType == "ghost") {
         document.getElementById(`pokeContent${index}`).classList.add('card-ghost');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-ghost');
     }
 }
 

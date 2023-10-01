@@ -167,26 +167,66 @@
 }
 
 
-.card-green {
+.card-grass {
     background-color: rgb(72,208,175);
 }
 
 
-.card-red {
+.card-fire {
     background-color: rgb(251,108,108);
 }
 
 
-.crad-blue {
+.card-water {
     background-color: rgb(117,189,253);
 }
 
-.card-yellow {
+.card-electric {
     background-color: rgb(255,215,111);
 }
 
-.card-violet {
+.card-psychic {
     background-color: rgb(255, 132, 234);
+}
+
+.card-dragon {
+    background-color: rgb(77,100,171);
+}
+
+.card-ice {
+    background-color: rgb(104,186,172);
+}
+
+.card-normal {
+    background-color: rgb(168,168,153);
+}
+
+.card-bug {
+    background-color: rgb(131,173,37);
+}
+
+.card-poison {
+    background-color: rgb(134,74,184);
+}
+
+.card-ground {
+    background-color: rgb(149,104,51);
+}
+
+.card-fairy {
+    background-color: rgb(212,128,207);
+}
+
+.card-fighting {
+    background-color: rgb(168,76,61);
+}
+
+.card-rock {
+    background-color: rgb(168,153,91);
+}
+
+.card-ghost {
+    background-color: rgb(99,60,100);
 }
 
 .info-header-container {

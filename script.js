@@ -1,5 +1,5 @@
 let isLiked = false;
-let j = 26;
+let j = 152;
 
 async function loadAllPokemonData() {
 
@@ -18,6 +18,8 @@ async function loadPokemon() {
     let responseAsJason = await response.json();
 
     document.getElementById('pokedex-container').innerHTML = pokemonBigContainer(responseAsJason, j);
+    firstPokeArrow(j);
+    lastPokeArrow(j);
     document.getElementById(`infoHeader${j}`).innerHTML = pokemonBigInfoHeader(j);
     document.getElementById('pokedex').innerHTML = pokemonSmallContainer(responseAsJason, j);
     document.getElementById(`pokeNumber${j}`).innerHTML = convertPokeNumer(responseAsJason);
@@ -38,6 +40,18 @@ function nextCountUp(index) {
 function nextCountDown(index) {
     --index;
     loadPokemon();
+}
+
+function firstPokeArrow(index) {
+    if (index == 1) {
+        document.getElementById(`leftNextButton${index}`).classList.add('d-none');
+    }
+}
+
+function lastPokeArrow(index) {
+    if (index == 151) {
+        document.getElementById(`rightNextButton${index}`).classList.add('d-none');
+    }
 }
 
 

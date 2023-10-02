@@ -1,7 +1,7 @@
 function pokemonBigContainer(responseAsJason, index) {
     let name = capitalizeFirstLetter(responseAsJason['name']);
     return `
-    <div id="pokeContent${index}" class="pokedex-content">
+    <div id="pokeContent${index}" class="pokedex-content d-none">
         <div class="pokedex-header">
             <div class="next-like-button-container">
                 <div>
@@ -117,7 +117,7 @@ function infoContentMoves(moves) {
 function pokemonSmallContainer(responseAsJason, index) {
     let name = capitalizeFirstLetter(responseAsJason['name']);
     return `
-    <div id="pokeContentSmall${index}" class="pokedex-content-small">
+    <div id="pokeContentSmall${index}" class="pokedex-content-small" onclick="showPokeBigCard(${index})">
         <div class="pokedex-header-small">
             <div class="d-flex-between">
                 <div>

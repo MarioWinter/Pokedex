@@ -1,12 +1,13 @@
 let isLiked = false;
 let j = 3;
+let PokeData = "";
 
 async function loadAllPokemonData() {
 
     for (let i = 1; i <= 20; i++) { // Hier habe ich 151 Pokémon als Beispiel genommen
         let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
         let response = await fetch(url);
-        let PokeData = await response.json();
+        PokeData = await response.json();
         loadPokemon(PokeData, i);
     }
 }
@@ -32,7 +33,7 @@ async function loadAllPokemonData() {
 // }
 
 function loadPokemon(responseAsJason, j) {
-    document.getElementById('pokedex-container').innerHTML = pokemonBigContainer(responseAsJason, j);
+    document.getElementById('pokedex-container').innerHTML += pokemonBigContainer(responseAsJason, j);
     firstPokeArrow(j);
     lastPokeArrow(j);
     document.getElementById(`infoHeader${j}`).innerHTML = pokemonBigInfoHeader(j);
@@ -44,6 +45,12 @@ function loadPokemon(responseAsJason, j) {
     pokeMenuSelection(responseAsJason, j);
     pokemonAbilities(responseAsJason, j);
 
+}
+
+function showPokeBigCard(index) {
+    document.getElementById('pokedex').classList.add('d-none');
+    document.getElementById('pokedex-container').classList.remove('d-none');
+    document.getElementById(`pokeContent${index}`).classList.remove('d-none');
 }
 
 

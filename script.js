@@ -1,5 +1,5 @@
 let isLiked = false;
-let j = 1;
+let j = 3;
 
 async function loadAllPokemonData() {
 

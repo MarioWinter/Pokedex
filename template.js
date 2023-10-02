@@ -118,7 +118,7 @@ function pokemonSmallContainer(responseAsJason, index) {
     let name = capitalizeFirstLetter(responseAsJason['name']);
     return `
     <div id="pokeContentSmall${index}" class="pokedex-content-small">
-        <div class="pokedex-header">
+        <div class="pokedex-header-small">
             <div class="d-flex-between">
                 <div>
                     <h2 class="mt-10">${name}</h2>
@@ -126,10 +126,10 @@ function pokemonSmallContainer(responseAsJason, index) {
                 </div>
                 <div id="pokeNumberSmall${index}"></div>
             </div>
-            <div class="poke-img-container">
-                <img class="pokemon-img-big" src="${responseAsJason['sprites']['other']['dream_world']['front_default']}" alt="Pokemon Image">
+            <div class="poke-img-container-small">
+                <img class="pokemon-img-small" src="${responseAsJason['sprites']['other']['dream_world']['front_default']}" alt="Pokemon Image">
             </div>
-            <svg class="pokedex-content-bkrlogo" xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 435 536">
+            <svg class="pokedex-content-bkrlogo-small" xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 435 536">
                 <defs>
                     <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style="stop-color: rgba(0,0,0,0.1); stop-opacity: 1" />

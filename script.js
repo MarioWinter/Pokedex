@@ -7,21 +7,36 @@ async function loadAllPokemonData() {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
         let response = await fetch(url);
         let PokeData = await response.json();
-        
+        loadPokemon(PokeData, i);
     }
 }
 
 
-async function loadPokemon() {
-    let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
-    let response = await fetch(url);
-    let responseAsJason = await response.json();
+// async function loadPokemon() {
+//     let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
+//     let response = await fetch(url);
+//     let responseAsJason = await response.json();
 
+//     document.getElementById('pokedex-container').innerHTML = pokemonBigContainer(responseAsJason, j);
+//     firstPokeArrow(j);
+//     lastPokeArrow(j);
+//     document.getElementById(`infoHeader${j}`).innerHTML = pokemonBigInfoHeader(j);
+//     document.getElementById('pokedex').innerHTML = pokemonSmallContainer(responseAsJason, j);
+//     document.getElementById(`pokeNumber${j}`).innerHTML = convertPokeNumer(responseAsJason);
+//     document.getElementById(`pokeNumberSmall${j}`).innerHTML = convertPokeNumer(responseAsJason);
+//     pokemonTypes(responseAsJason, j);
+//     cardColor(responseAsJason, j);
+//     pokeMenuSelection(responseAsJason, j);
+//     pokemonAbilities(responseAsJason, j);
+
+// }
+
+function loadPokemon(responseAsJason, j) {
     document.getElementById('pokedex-container').innerHTML = pokemonBigContainer(responseAsJason, j);
     firstPokeArrow(j);
     lastPokeArrow(j);
     document.getElementById(`infoHeader${j}`).innerHTML = pokemonBigInfoHeader(j);
-    document.getElementById('pokedex').innerHTML = pokemonSmallContainer(responseAsJason, j);
+    document.getElementById('pokedex').innerHTML += pokemonSmallContainer(responseAsJason, j);
     document.getElementById(`pokeNumber${j}`).innerHTML = convertPokeNumer(responseAsJason);
     document.getElementById(`pokeNumberSmall${j}`).innerHTML = convertPokeNumer(responseAsJason);
     pokemonTypes(responseAsJason, j);

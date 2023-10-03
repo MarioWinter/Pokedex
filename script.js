@@ -1,15 +1,16 @@
 let isLiked = false;
-let j = 3;
+let j = "";
 let PokeData = "";
 
 async function loadAllPokemonData() {
-
+    
     for (let i = 1; i <= 20; i++) { // Hier habe ich 151 Pokémon als Beispiel genommen
         let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
         let response = await fetch(url);
         PokeData = await response.json();
         loadPokemon(PokeData, i);
     }
+
 }
 
 
@@ -55,14 +56,16 @@ function showPokeBigCard(index) {
 
 
 function nextCountUp(index) {
-    j = ++index;
-    loadPokemon();
+    document.getElementById(`pokeContent${index}`).classList.add('d-none');
+    ++index
+    document.getElementById(`pokeContent${index}`).classList.remove('d-none');
 }
 
 
 function nextCountDown(index) {
-    j = --index;
-    loadPokemon();
+    document.getElementById(`pokeContent${index}`).classList.add('d-none');
+    --index
+    document.getElementById(`pokeContent${index}`).classList.remove('d-none');  
 }
 
 function firstPokeArrow(index) {
@@ -104,8 +107,8 @@ function pokemonAbilities(responseAsJason, index) {
 }
 
 
-function likeHandleClick() {
-    let likeButton = document.getElementById("likeButton");
+function likeHandleClick(index) {
+    let likeButton = document.getElementById(`likeButton${index}`);
     if (isLiked) {
         likeButton.classList.remove("clicked");
         isLiked = false;

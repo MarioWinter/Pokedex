@@ -214,7 +214,7 @@
     }
 }
 
-#likeButton.clicked {
+.clicked {
     animation: fillHeart 0.3s ease forwards;
 }
 

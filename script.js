@@ -1,10 +1,11 @@
 let isLiked = false;
 let j = "";
 let PokeData = "";
+let maxPoke = 20;
 
 async function loadAllPokemonData() {
     
-    for (let i = 1; i <= 20; i++) { // Hier habe ich 151 Pokémon als Beispiel genommen
+    for (let i = 1; i <= maxPoke; i++) { // Hier habe ich 151 Pokémon als Beispiel genommen
         let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
         let response = await fetch(url);
         PokeData = await response.json();
@@ -13,25 +14,31 @@ async function loadAllPokemonData() {
 
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Code, der die Event Listener registriert
 
-// async function loadPokemon() {
-//     let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
-//     let response = await fetch(url);
-//     let responseAsJason = await response.json();
+    let toggle = document.getElementById('toggle'); //click on body
 
-//     document.getElementById('pokedex-container').innerHTML = pokemonBigContainer(responseAsJason, j);
-//     firstPokeArrow(j);
-//     lastPokeArrow(j);
-//     document.getElementById(`infoHeader${j}`).innerHTML = pokemonBigInfoHeader(j);
-//     document.getElementById('pokedex').innerHTML = pokemonSmallContainer(responseAsJason, j);
-//     document.getElementById(`pokeNumber${j}`).innerHTML = convertPokeNumer(responseAsJason);
-//     document.getElementById(`pokeNumberSmall${j}`).innerHTML = convertPokeNumer(responseAsJason);
-//     pokemonTypes(responseAsJason, j);
-//     cardColor(responseAsJason, j);
-//     pokeMenuSelection(responseAsJason, j);
-//     pokemonAbilities(responseAsJason, j);
+    document.addEventListener('click', function (event) {
+        let isClickInside = toggle.contains(event.currentTarget);
 
-// }
+        if (!isClickInside) {
+            closePokeBigCard();
+        }
+    });
+});
+
+
+function doNotClose(event) {
+    event.stopPropagation();
+}
+
+function hideAllpokeContent() {
+    for (let i = 1; i <= maxPoke; i++) {
+        document.getElementById(`pokeContent${i}`).classList.add('d-none');  
+    }
+}
+
 
 function loadPokemon(responseAsJason, j) {
     document.getElementById('pokedex-container').innerHTML += pokemonBigContainer(responseAsJason, j);
@@ -52,6 +59,12 @@ function showPokeBigCard(index) {
     document.getElementById('pokedex').classList.add('d-none');
     document.getElementById('pokedex-container').classList.remove('d-none');
     document.getElementById(`pokeContent${index}`).classList.remove('d-none');
+}
+
+function closePokeBigCard() {
+    document.getElementById('pokedex').classList.remove('d-none');
+    document.getElementById('pokedex-container').classList.add('d-none');
+    hideAllpokeContent();
 }
 
 

@@ -6,6 +6,7 @@
 
 :root {
     --big-crad-witdh: 300px;
+    --big-crad-heigt: 500px;
     --text-grey: rgb(180,180,180);
 
 }
@@ -16,7 +17,7 @@
     height: 100vh;
     background-image: url("./img/pokedex_backround.svg");
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
     background-size: cover;
     background-attachment: fixed;
     position: absolute;
@@ -49,8 +50,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    margin: 10px;
     flex-wrap: wrap;
+    padding-top: 100px;
 }
 
 
@@ -89,8 +90,10 @@
 .pokedex-content {
     border-radius: 20px;
     width: var(--big-crad-witdh);
-    height: 50vh;
+    height: var(--big-crad-heigt);
     overflow: hidden;
+    box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.14);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 
@@ -174,10 +177,13 @@
 
 .menu-bar {
     color: white;
-    background-color: rgba(215,31,55,1);
+    background-color: rgb(215,31,55);
     height: 80px;
+    width: 100vw;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
     margin-bottom: 50px;
+    position: fixed;
+    z-index: 5;
 }
 
 

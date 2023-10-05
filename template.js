@@ -113,7 +113,7 @@ function infoContentMoves(moves) {
     `;
 }
 
-//ist nicht fertig, wurde nur angelegt 01.10.2023
+
 function pokemonSmallContainer(responseAsJason, index) {
     let name = capitalizeFirstLetter(responseAsJason['name']);
     return `

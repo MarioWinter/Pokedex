@@ -11,7 +11,15 @@
 
 </head>
 <body id="toggle" onload="loadAllPokemonData()">
-    <div class="menu-bar"></div>
+    <div class="menu-bar">
+        <svg width="200" height="100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20,40 L180,40 C190,40 190,60 180,60 L20,60 C10,60 10,40 20,40 Z" fill="#20305E" />
+            <path d="M20,45 L180,45 C188,45 188,55 180,55 L20,55 C12,55 12,45 20,45 Z" fill="#000" />
+            <text x="60" y="50" font-family="Arial, sans-serif" font-size="36" fill="#FFF">Pokedex</text>
+        </svg>
+          
+        <input id="search" type="text" onkeyup="filterNames()">
+    </div>
     <div class="atf-img"></div>
     
     <div id="pokedex" class="pokedex-container">

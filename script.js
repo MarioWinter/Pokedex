@@ -2,8 +2,11 @@ let isLiked = false;
 let j = "";
 let PokeData = "";
 let maxPoke = 20;
+let PokeSmallInnerHTML = [];
+let PokeName = [];
 
 async function loadAllPokemonData() {
+    PokeSmallInnerHTML = [];
     
     for (let i = 1; i <= maxPoke; i++) { // Hier habe ich 151 Pokémon als Beispiel genommen
         let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
@@ -48,10 +51,17 @@ function loadPokemon(responseAsJason, j) {
     document.getElementById(`pokeNumber${j}`).innerHTML = convertPokeNumer(responseAsJason);
     document.getElementById(`pokeNumberSmall${j}`).innerHTML = convertPokeNumer(responseAsJason);
     pokemonTypes(responseAsJason, j);
-    cardColor(responseAsJason, j);
     pokeMenuSelection(responseAsJason, j);
     pokemonAbilities(responseAsJason, j);
+    cardColor(j);
+    pushPokeSmallInnerHTML(j);
 }
+
+function pushPokeSmallInnerHTML(index) {
+    let pokemon = document.getElementById(`pokeContentSmall${index}`).innerHTML;
+    PokeSmallInnerHTML.push(pokemon);
+}
+
 
 function filterNames() {
     let search = document.getElementById('search').value;
@@ -59,17 +69,28 @@ function filterNames() {
 
 
     let pokedex = document.getElementById('pokedex');
-    // pokedex.innerHTML = '';
+    pokedex.innerHTML = '';
 
-    for (let index = 1; index < maxPoke; index++) {
-        let pokemon = document.getElementById(`pokeContentSmall${index}`).innerHTML;
-        if(pokemon.toLowerCase().includes(search)) {
-
-            pokedex.innerHTML = '';
-            //Die innHTML pokeContentSmall muss in eine Liste geladen werden
-            //darin kann gesucht und geladen werden.
+    if (search == "") {
+        for (let index = 1; index <= PokeSmallInnerHTML.length; index++) {
+            --index;
+            let pokemon = PokeSmallInnerHTML[index];
+            ++index;
             pokedex.innerHTML += 
-            `<div id="pokeContentSmall${index}" class="pokedex-content-small card-grass" onclick="doNotClose(event), showPokeBigCard(${index})">${pokemon}<div>`;
+                `<div id="pokeContentSmall${index}" class="pokedex-content-small" onclick="doNotClose(event), showPokeBigCard(${index})">${pokemon}<div>`;
+            cardColor(index);
+        } 
+    } else {
+        for (let index = 1; index <= PokeSmallInnerHTML.length; index++) {
+            --index;
+            let pokemon = PokeSmallInnerHTML[index];
+            ++index;
+            if(pokemon.toLowerCase().includes(search)) {
+
+                pokedex.innerHTML += 
+                `<div id="pokeContentSmall${index}" class="pokedex-content-small" onclick="doNotClose(event), showPokeBigCard(${index})">${pokemon}<div>`;
+                cardColor(index);
+            }
         }
     }
 }
@@ -121,7 +142,7 @@ function pokemonTypes(responseAsJason, index) {
         let pokemonType = type.type.name;
         if (pokemonType !== "") {
             document.getElementById(`pokeType${index}`).innerHTML += `<span class="pokemon-type">${pokemonType}</span>`;
-            document.getElementById(`pokeTypeSmall${index}`).innerHTML += `<div class="pokemon-type">${pokemonType}</div>`;
+            document.getElementById(`pokeTypeSmall${index}`).innerHTML += `<div id="mainType${index}" class="pokemon-type">${pokemonType}</div>`;
         }
     }
 }
@@ -231,55 +252,59 @@ function convertPokeNumer(responseAsJason) {
 }
 
 
-function cardColor(responseAsJason, index) {
-    let pokemonType = responseAsJason['types'][0].type.name;
-    if (pokemonType == "grass") {
+function cardColor(index) {
+    let mainType = document.getElementById(`mainType${index}`).innerHTML;
+    // let pokemonType = responseAsJason['types'][0].type.name;
+    if (mainType == "grass") {
         document.getElementById(`pokeContent${index}`).classList.add('card-grass');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-grass');
-    } else if (pokemonType == "fire") {
+    } else if (mainType == "fire") {
         document.getElementById(`pokeContent${index}`).classList.add('card-fire');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-fire');
-    } else if (pokemonType == "psychic") {
+    } else if (mainType == "psychic") {
         document.getElementById(`pokeContent${index}`).classList.add('card-psychic');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-psychic');
-    } else if (pokemonType == "electric") {
+    } else if (mainType == "electric") {
         document.getElementById(`pokeContent${index}`).classList.add('card-electric');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-electric');
-    } else if (pokemonType == "dragon") {
+    } else if (mainType == "dragon") {
         document.getElementById(`pokeContent${index}`).classList.add('card-dragon');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-dragon');
-    } else if (pokemonType == "ice") {
+    } else if (mainType == "ice") {
         document.getElementById(`pokeContent${index}`).classList.add('card-ice');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-ice');
-    } else if (pokemonType == "normal") {
+    } else if (mainType == "normal") {
         document.getElementById(`pokeContent${index}`).classList.add('card-normal');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-normal');
-    } else if (pokemonType == "water") {
+    } else if (mainType == "water") {
         document.getElementById(`pokeContent${index}`).classList.add('card-water');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-water');
-    } else if (pokemonType == "bug") {
+    } else if (mainType == "bug") {
        document.getElementById(`pokeContent${index}`).classList.add('card-bug');
        document.getElementById(`pokeContentSmall${index}`).classList.add('card-bug');
-    } else if (pokemonType == "poison") {
+    } else if (mainType == "poison") {
         document.getElementById(`pokeContent${index}`).classList.add('card-poison');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-poison');
-    } else if (pokemonType == "ground") {
+    } else if (mainType == "ground") {
         document.getElementById(`pokeContent${index}`).classList.add('card-ground');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-ground');
-    } else if (pokemonType == "fairy") {
+    } else if (mainType == "fairy") {
         document.getElementById(`pokeContent${index}`).classList.add('card-fairy');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-fairy');
-    } else if (pokemonType == "fighting") {
+    } else if (mainType == "fighting") {
         document.getElementById(`pokeContent${index}`).classList.add('card-fighting');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-fighting');
-    } else if (pokemonType == "rock") {
+    } else if (mainType == "rock") {
         document.getElementById(`pokeContent${index}`).classList.add('card-rock');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-rock');
-    } else if (pokemonType == "ghost") {
+    } else if (mainType == "ghost") {
         document.getElementById(`pokeContent${index}`).classList.add('card-ghost');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-ghost');
     }
+    mainType = "";
 }
+
+
 
 function fixWidth(width) {
     let newWidth = width / 10;

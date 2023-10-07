@@ -6,7 +6,7 @@
 
 :root {
     --big-crad-witdh: 300px;
-    --big-crad-heigt: 500px;
+    --big-crad-heigt: 550px;
     --text-grey: rgb(180,180,180);
 
 }
@@ -75,8 +75,11 @@
 
 
 .pokedex-content-bkrlogo {
-    bottom: 5px;
-    right: -10px;
+    bottom: 2px;
+    height: 140px;
+    width: 140px;
+    right: 21px;
+    z-index: 0;
     position: absolute;
 }
 
@@ -357,9 +360,18 @@
     font-size: 12px;
 }
 
+.moves {
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: rgba(255, 149, 0, 0.2);
+    text-align: center;
+}
+
 .movesContent {
     overflow: scroll;
     height: 87%;
+    flex-wrap: wrap;
+    display: flex;
     padding-bottom: 15px;
 }
 

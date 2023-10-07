@@ -117,7 +117,7 @@ function infoContentMoves(moves) {
 function pokemonSmallContainer(responseAsJason, index) {
     let name = capitalizeFirstLetter(responseAsJason['name']);
     return `
-    <div id="pokeContentSmall${index}" class="pokedex-content-small" onclick="doNotClose(event), showPokeBigCard(${index})">
+    <div id="pokeContentSmall${index}" class="pokedex-content-small" onclick="doNotClose(event), showPokeBigCard(${index})" onmouseover="pokeImgSizeUp(${index})" onmouseout="pokeImgSizeDown(${index})">
         <div class="pokedex-header-small">
             <div class="d-flex-between">
                 <div>
@@ -127,9 +127,10 @@ function pokemonSmallContainer(responseAsJason, index) {
                 <div id="pokeNumberSmall${index}"></div>
             </div>
             <div class="poke-img-container-small">
-                <img class="pokemon-img-small" src="${responseAsJason['sprites']['other']['dream_world']['front_default']}" alt="Pokemon Image">
+                <img id="pokemonImage${index}" class="pokemon-img-small" src="${responseAsJason['sprites']['other']['dream_world']['front_default']}" alt="Pokemon Image">
             </div>
-            <svg class="pokedex-content-bkrlogo-small" xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 435 536">
+            
+            <svg class="pokedex-content-bkrlogo-small" xmlns="http://www.w3.org/2000/svg" width="150px" height="150px" viewBox="0 0 435 536">
                 <defs>
                     <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style="stop-color: rgba(0,0,0,0.1); stop-opacity: 1" />
@@ -142,6 +143,7 @@ function pokemonSmallContainer(responseAsJason, index) {
                 <path d="M374.211,451.68c-0.89,-0.89 -2.449,-0.89 -3.339,0c-30.721,26.046 -67.674,43.855 -106.854,51.646c-1.336,0.223 -2.226,1.558 -2.003,2.894l5.12,27.159c0.222,0.668 0.445,1.335 1.113,1.558c0.445,0.223 0.89,0.445 1.335,0.445l0.446,0c45.858,-9.127 88.822,-30.052 124.217,-60.773c0.445,-0.445 0.891,-1.113 0.891,-1.781c-0,-0.668 -0.223,-1.335 -0.891,-1.781l-20.035,-19.367Z" fill="url(#grad)" />
                 <path d="M33.392,116.649c0.445,0.445 1.113,0.668 1.781,0.668c0.668,-0 1.335,-0.446 1.781,-0.891c45.19,-52.982 110.86,-83.479 180.538,-83.479c43.632,-0 86.151,12.021 123.327,34.504c1.113,0.668 2.449,0.446 3.339,-0.667l16.696,-22.262c0.446,-0.667 0.668,-1.335 0.446,-2.003c-0.223,-0.668 -0.446,-1.336 -1.113,-1.781c-42.742,-26.713 -92.162,-40.738 -142.695,-40.738c-78.359,0 -152.712,34.06 -204.135,93.497c-0.891,1.113 -0.891,2.449 0.222,3.339l19.813,19.813Z" fill="url(#grad)" />
             </svg>
+            
         </div>
     </div>
     `;

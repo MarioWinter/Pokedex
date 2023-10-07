@@ -3,7 +3,6 @@ let j = "";
 let PokeData = "";
 let maxPoke = 20;
 let PokeSmallInnerHTML = [];
-let PokeName = [];
 
 async function loadAllPokemonData() {
     PokeSmallInnerHTML = [];
@@ -301,13 +300,22 @@ function cardColor(index) {
         document.getElementById(`pokeContent${index}`).classList.add('card-ghost');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-ghost');
     }
-    mainType = "";
 }
-
 
 
 function fixWidth(width) {
     let newWidth = width / 10;
     return newWidth;
+}
+
+
+function pokeImgSizeUp(index) {
+    let pokemonImage = `pokemonImage${index}`;
+    document.getElementById(pokemonImage).style.height = "120px";
+}
+
+function pokeImgSizeDown(index) {
+    let pokemonImage = `pokemonImage${index}`;
+    document.getElementById(pokemonImage).style.height = "100px";
 }
 

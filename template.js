@@ -44,6 +44,11 @@ function pokemonBigContainer(responseAsJason, index) {
             <div id="infoContainerBest_Stats${index}" class="d-none">
 
             </div>
+
+            <div id="infoContainerEvolution${index}" class="d-none">
+
+            </div>
+
             <div id="infoContainerMoves${index}" class="movesContent d-none">
 
             </div>
@@ -92,6 +97,7 @@ function infoContentBestStats(stats) {
     </div>
     `;
 }
+
 
 function infoContentMoves(moves) {
     return `

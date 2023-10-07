@@ -1,17 +1,18 @@
 let isLiked = false;
 let j = "";
 let PokeData = "";
-let maxPoke = 20;
+let m = "";
+let maxPoke = 47;
 let PokeSmallInnerHTML = [];
 
 async function loadAllPokemonData() {
     PokeSmallInnerHTML = [];
     
-    for (let i = 1; i <= maxPoke; i++) { // Hier habe ich 151 Pokémon als Beispiel genommen
-        let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
+    for (m = 1; m <= maxPoke; m++) {
+        let url = `https://pokeapi.co/api/v2/pokemon/${m}/`;
         let response = await fetch(url);
         PokeData = await response.json();
-        loadPokemon(PokeData, i);
+        loadPokemon(PokeData, m);
     }
 }
 
@@ -28,6 +29,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+async function loadMore() {
+    if (maxPoke <= 497) {
+        maxPoke = maxPoke + 50;
+    
+        for (;m <= maxPoke; m++) {
+            let url = `https://pokeapi.co/api/v2/pokemon/${m}/`;
+            let responseMore = await fetch(url);
+            PokeData = await responseMore.json();
+            loadPokemon(PokeData, m);
+        }
+    }
+}
 
 
 function doNotClose(event) {
@@ -103,8 +117,8 @@ function showPokeBigCard(index) {
 
 function closePokeBigCard() {
     document.getElementById('pokedex').classList.remove('d-none');
-    document.getElementById('pokedex-container').classList.add('d-none');
     hideAllpokeContent();
+    document.getElementById('pokedex-container').classList.add('d-none');
 }
 
 
@@ -128,7 +142,7 @@ function firstPokeArrow(index) {
 }
 
 function lastPokeArrow(index) {
-    if (index == 151) {
+    if (index === maxPoke) {
         document.getElementById(`rightNextButton${index}`).classList.add('d-none');
     }
 }
@@ -210,6 +224,7 @@ function removeInfoContainer(index) {
 function pokeMenuSelection(responseAsJason, j) {
     document.getElementById(`infoContainerAbout${j}`).innerHTML += infoContentAbout(responseAsJason, j);
     bestStats(responseAsJason, j);
+    // evolution();
     moves(responseAsJason, j);
     
 }
@@ -220,6 +235,7 @@ function bestStats(responseAsJason, j) {
         document.getElementById(`infoContainerBest_Stats${j}`).innerHTML += infoContentBestStats(stats);
     }
 }
+
 
 function moves(responseAsJason, j) {
     for (let i = 0; i < responseAsJason['moves'].length; i++) {

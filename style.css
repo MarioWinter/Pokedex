@@ -8,23 +8,17 @@
     --big-crad-witdh: 300px;
     --big-crad-heigt: 550px;
     --text-grey: rgb(180,180,180);
-
+    --primary-grey: rgba(210, 210, 210, 0.5);
 }
 
 
-.atf-img {
+body{
     background-color: rgb(247,248,252);
-    height: 100vh;
     background-image: url("./img/pokedex_backround.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: -10;
 }
   
 
@@ -48,7 +42,7 @@
 
 .pokedex-container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
     padding-top: 100px;
@@ -103,6 +97,7 @@
 .pokedex-content-small {
     border-radius: 20px;
     width: var(--big-crad-witdh);
+    min-width: 225px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
     border: 2px solid rgba(0, 0, 0, 0);
     height: 200px;
@@ -194,11 +189,21 @@
     padding: 0px 10px;
 }
 
-.logo-search {
+.logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 50vw;
+    width: 100vw;
+}
+
+.search {
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
 }
 
 
@@ -409,6 +414,64 @@
 
 .mr-30 {
     margin-right: 30px
+}
+
+footer {
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.load-more {
+    background-color: transparent;
+    color: rgb(215,31,55);
+    border: 2px solid rgb(215,31,55); /* Lila Rand */
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 125ms ease-in-out, box-shadow 125ms ease-in-out; /* Übergangseffekte für Rand und Schatten */
+    
+    /* Leichter Glow-Effekt (Innenschatten) */
+    box-shadow: inset 0 0 10px rgba(215,31,55, 0.7);
+}
+  
+.load-more:hover {
+    background-color: rgb(215,31,55); /* Lila Hintergrund */
+    box-shadow: inset 0 0 6px rgba(255,255,255, 0.2);
+    color: white;
+}
+  
+  
+.load-more:focus {
+    outline: none; /* Entfernt den standardmäßigen Focus-Rahmen */
+}
+
+
+.input {
+    border: 2px solid var(--primary-grey);
+    border-radius: 4px;
+    font-size: 16px;
+    width: 250px;
+    height: 39px;
+    background-image: url(./icon/magnifying-glass-solid.svg);
+    background-position: 12px 7px;
+    background-color: white;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    text-indent: 37px;
+}
+
+
+input#search:focus {
+    background-image: none;
+}
+
+
+input[type=text]:focus{
+    outline: none;
 }
 
 

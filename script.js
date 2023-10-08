@@ -66,6 +66,7 @@ function loadPokemon(responseAsJason, j) {
     pokemonTypes(responseAsJason, j);
     pokeMenuSelection(responseAsJason, j);
     pokemonAbilities(responseAsJason, j);
+    // fetchEvolution(j);
     cardColor(j);
     pushPokeSmallInnerHTML(j);
 }
@@ -80,11 +81,10 @@ function filterNames() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
 
-
     let pokedex = document.getElementById('pokedex');
-    pokedex.innerHTML = '';
-
+    
     if (search == "") {
+        pokedex.innerHTML = '';
         for (let index = 1; index <= PokeSmallInnerHTML.length; index++) {
             --index;
             let pokemon = PokeSmallInnerHTML[index];
@@ -93,7 +93,8 @@ function filterNames() {
                 `<div id="pokeContentSmall${index}" class="pokedex-content-small" onclick="doNotClose(event), showPokeBigCard(${index})">${pokemon}<div>`;
             cardColor(index);
         } 
-    } else {
+    } else if(search.length > 3) {
+        pokedex.innerHTML = '';
         for (let index = 1; index <= PokeSmallInnerHTML.length; index++) {
             --index;
             let pokemon = PokeSmallInnerHTML[index];
@@ -116,8 +117,8 @@ function showPokeBigCard(index) {
 }
 
 function closePokeBigCard() {
-    document.getElementById('pokedex').classList.remove('d-none');
     hideAllpokeContent();
+    document.getElementById('pokedex').classList.remove('d-none');
     document.getElementById('pokedex-container').classList.add('d-none');
 }
 

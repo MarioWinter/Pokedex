@@ -83,7 +83,7 @@ function filterNames() {
 
     let pokedex = document.getElementById('pokedex');
     
-    if (search == "") {
+    if (search.length == 1) {
         pokedex.innerHTML = '';
         for (let index = 1; index <= PokeSmallInnerHTML.length; index++) {
             --index;
@@ -93,7 +93,7 @@ function filterNames() {
                 `<div id="pokeContentSmall${index}" class="pokedex-content-small" onclick="doNotClose(event), showPokeBigCard(${index})">${pokemon}<div>`;
             cardColor(index);
         } 
-    } else if(search.length > 3) {
+    } else if(search.length >= 3) {
         pokedex.innerHTML = '';
         for (let index = 1; index <= PokeSmallInnerHTML.length; index++) {
             --index;

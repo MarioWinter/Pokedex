@@ -30,6 +30,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.getElementById("search").addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        filterNames();
+    }
+  });
+
 async function loadMore() {
     if (maxPoke <= 497) {
         maxPoke = maxPoke + 50;
@@ -76,8 +82,7 @@ function pushPokeSmallInnerHTML(index) {
     PokeSmallInnerHTML.push(pokemon);
 }
 
-
-function filterNames() {
+function filterClose() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
 
@@ -93,7 +98,16 @@ function filterNames() {
                 `<div id="pokeContentSmall${index}" class="pokedex-content-small" onclick="doNotClose(event), showPokeBigCard(${index})">${pokemon}<div>`;
             cardColor(index);
         } 
-    } else if(search.length >= 3) {
+    }
+}
+
+
+function filterNames() {
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
+
+    let pokedex = document.getElementById('pokedex');
+    if(search.length >= 3) {
         pokedex.innerHTML = '';
         for (let index = 1; index <= PokeSmallInnerHTML.length; index++) {
             --index;

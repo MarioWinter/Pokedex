@@ -72,7 +72,7 @@ function loadPokemon(responseAsJason, j) {
     pokemonTypes(responseAsJason, j);
     pokeMenuSelection(responseAsJason, j);
     pokemonAbilities(responseAsJason, j);
-    // fetchEvolution(j);
+    //fetchEvolution(j);
     cardColor(j);
     pushPokeSmallInnerHTML(j);
 }

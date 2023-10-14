@@ -164,14 +164,22 @@ body{
     height: 135px;
 }
 
+
 .pokemon-img-small {
     height: 100px;
     transition: height 75ms ease-in-out;
 }
 
+
 .pokemon-img-pocket {
     height: 80px;
 }
+
+
+.pokemon-img-pocket2 {
+    height: 60px;
+}
+
 
 .next-like-button-container {
     display: flex;
@@ -480,9 +488,23 @@ input[type=text]:focus{
 
 .pokeEvolutionContainer {
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.pokeEvolutionHeader {
+    display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 700;
 }
+
 
 
 

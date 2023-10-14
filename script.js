@@ -72,7 +72,7 @@ function loadPokemon(responseAsJason, j) {
     pokemonTypes(responseAsJason, j);
     pokeMenuSelection(responseAsJason, j);
     pokemonAbilities(responseAsJason, j);
-    //fetchEvolution(j);
+    fetchEvolution(responseAsJason, j);
     cardColor(j);
     pushPokeSmallInnerHTML(j);
 }
@@ -204,6 +204,7 @@ function likeHandleClick(index) {
 function addHeaderMenuSelection(ID, index) {
     document.getElementById(`about${index}`).classList.remove('info-header-selected');
     document.getElementById(`baseStats${index}`).classList.remove('info-header-selected');
+    document.getElementById(`evolution${index}`).classList.remove('info-header-selected');
     document.getElementById(`moves${index}`).classList.remove('info-header-selected');
 
     document.getElementById(ID).classList.add('info-header-selected');
@@ -222,6 +223,12 @@ function showInfoBest_Stats(index) {
 }
 
 
+function showInfoEvo(index) {
+    removeInfoContainer(index);
+    document.getElementById(`infoContainerEvolution${index}`).classList.remove('d-none');
+}
+
+
 function showInfoMoves(index) {
     removeInfoContainer(index);
     document.getElementById(`infoContainerMoves${index}`).classList.remove('d-none');
@@ -231,6 +238,7 @@ function showInfoMoves(index) {
 function removeInfoContainer(index) {
     document.getElementById(`infoContainerAbout${index}`).classList.add('d-none');
     document.getElementById(`infoContainerBest_Stats${index}`).classList.add('d-none');
+    document.getElementById(`infoContainerEvolution${index}`).classList.add('d-none');
     document.getElementById(`infoContainerMoves${index}`).classList.add('d-none');
 
 }
@@ -239,10 +247,9 @@ function removeInfoContainer(index) {
 function pokeMenuSelection(responseAsJason, j) {
     document.getElementById(`infoContainerAbout${j}`).innerHTML += infoContentAbout(responseAsJason, j);
     bestStats(responseAsJason, j);
-    // evolution();
     moves(responseAsJason, j);
-    
 }
+
 
 function bestStats(responseAsJason, j) {
     for (let i = 0; i < responseAsJason['stats'].length; i++) {

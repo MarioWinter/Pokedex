@@ -62,6 +62,7 @@ function pokemonBigInfoHeader(index) {
     return `
         <div id="about${index}" onclick="addHeaderMenuSelection('about${index}', ${index}), showInfoAbout(${index})" class="info-header-menu info-header-selected">About</div>
         <div id="baseStats${index}" onclick="addHeaderMenuSelection('baseStats${index}', ${index}), showInfoBest_Stats(${index})" class="info-header-menu">Base Stats</div>
+        <div id="evolution${index}" onclick="addHeaderMenuSelection('evolution${index}', ${index}), showInfoEvo(${index})" class="info-header-menu">Evolution</div>
         <div id="moves${index}" onclick="addHeaderMenuSelection('moves${index}', ${index}), showInfoMoves(${index})" class="info-header-menu">Moves</div>
     `;
 }

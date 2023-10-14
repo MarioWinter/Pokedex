@@ -169,6 +169,10 @@ body{
     transition: height 75ms ease-in-out;
 }
 
+.pokemon-img-pocket {
+    height: 80px;
+}
+
 .next-like-button-container {
     display: flex;
     justify-content: space-between;
@@ -472,6 +476,12 @@ input#search:focus {
 
 input[type=text]:focus{
     outline: none;
+}
+
+.pokeEvolutionContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 

@@ -38,16 +38,21 @@ function pokemonBigContainer(responseAsJason, index) {
             <div class="info-header-container mt-30" id="infoHeader${index}">
             </div>
 
+
             <div id="infoContainerAbout${index}" class="">
 
             </div>
-            <div id="infoContainerBest_Stats${index}" class="d-none">
+
+
+            <div class="info-best-stats d-none" id="infoContainerBest_Stats${index}" class="">
 
             </div>
+
 
             <div id="infoContainerEvolution${index}" class="d-none">
 
             </div>
+
 
             <div id="infoContainerMoves${index}" class="movesContent d-none">
 
@@ -90,19 +95,28 @@ function infoContentAbout(responseAsJason, index) {
 }
 
 
-function infoContentBestStats(stats) {
+function infoContentBestStats(statsNames, statsValues, j) {
     return `
     <div class="card-content">
-        <div class="card-info-key">${capitalizeFirstLetter(stats['stat'].name)}</div>
-        <div class="card-info-value">${stats['base_stat']}</div>
+        <div class="card-info-key">${statsNames}</div>
+        <div class="card-info-value">${statsValues}</div>
+    </div>
+    `;
+}
+
+function addCanversChart(j) {
+    return `
+    
+    <div class="info-best-stats">
+        <canvas class="chart" id="myChart${j}"></canvas>
     </div>
     `;
 }
 
 
-function infoContentMoves(moves) {
+function infoContentMoves(move) {
     return `
-    <span class="moves card-info-value">${capitalizeFirstLetter(moves['move']['name'])}</span>
+    <span class="moves card-info-value">${capitalizeFirstLetter(move)}</span>
     `;
 }
 

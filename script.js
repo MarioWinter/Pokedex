@@ -5,6 +5,7 @@ let m = "";
 let maxPoke = 47;
 let PokeSmallInnerHTML = [];
 
+
 async function loadAllPokemonData() {
     PokeSmallInnerHTML = [];
     
@@ -14,6 +15,7 @@ async function loadAllPokemonData() {
         PokeData = await response.json();
         loadPokemon(PokeData, m);
     }
+    
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -58,6 +60,10 @@ function hideAllpokeContent() {
     for (let i = 1; i <= maxPoke; i++) {
         document.getElementById(`pokeContent${i}`).classList.add('d-none');  
     }
+}
+
+function hidePokeContent(i) {
+    document.getElementById(`pokeContent${i}`).classList.add('d-none'); 
 }
 
 
@@ -220,6 +226,7 @@ function showInfoAbout(index) {
 function showInfoBest_Stats(index) {
     removeInfoContainer(index);
     document.getElementById(`infoContainerBest_Stats${index}`).classList.remove('d-none');
+    bestStats(index);
 }
 
 
@@ -246,23 +253,31 @@ function removeInfoContainer(index) {
 
 function pokeMenuSelection(responseAsJason, j) {
     document.getElementById(`infoContainerAbout${j}`).innerHTML += infoContentAbout(responseAsJason, j);
-    bestStats(responseAsJason, j);
     moves(responseAsJason, j);
 }
 
 
-function bestStats(responseAsJason, j) {
+async function bestStats(j) {
+    let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
+    let response = await fetch(url);
+    responseAsJason = await response.json();
+
+    let pokemonStatsValues = [];
     for (let i = 0; i < responseAsJason['stats'].length; i++) {
         let stats = responseAsJason['stats'][i];
-        document.getElementById(`infoContainerBest_Stats${j}`).innerHTML += infoContentBestStats(stats);
+        let statsValues = stats['base_stat'];
+        pokemonStatsValues.push(statsValues);
     }
+    document.getElementById(`infoContainerBest_Stats${j}`).innerHTML = addCanversChart(j);
+    renderChart(pokemonStatsValues, j);
+
 }
 
 
 function moves(responseAsJason, j) {
     for (let i = 0; i < responseAsJason['moves'].length; i++) {
-        let moves = responseAsJason['moves'][i];
-        document.getElementById(`infoContainerMoves${j}`).innerHTML += infoContentMoves(moves);
+        let move = responseAsJason['moves'][i]['move']['name'];
+        document.getElementById(`infoContainerMoves${j}`).innerHTML += infoContentMoves(move);
     }
 }
 
@@ -291,7 +306,7 @@ function convertPokeNumer(responseAsJason) {
 
 function cardColor(index) {
     let mainType = document.getElementById(`mainType${index}`).innerHTML;
-    // let pokemonType = responseAsJason['types'][0].type.name;
+
     if (mainType == "grass") {
         document.getElementById(`pokeContent${index}`).classList.add('card-grass');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-grass');

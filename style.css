@@ -377,6 +377,11 @@ body{
     font-size: 12px;
 }
 
+.card-chart {
+    width: 100%;
+    height: 10px;
+}
+
 .moves {
     padding: 5px 10px;
     border-radius: 15px;
@@ -503,6 +508,18 @@ input[type=text]:focus{
     margin-top: 10px;
     font-size: 12px;
     font-weight: 700;
+}
+
+.info-best-stats {
+    display: block; /* Oder andere sichtbare Anzeigeoptionen */
+    position: relative;
+    width: 100%; /* Oder die gewünschte Breite */
+    height: 245px; /* Oder die gewünschte Höhe */
+}
+
+.chart {
+    height: 245px;
+    width: 280px;  
 }
 
 

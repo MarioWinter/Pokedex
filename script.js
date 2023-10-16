@@ -18,6 +18,7 @@ async function loadAllPokemonData() {
     
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
     // Code, der die Event Listener registriert
 
@@ -32,11 +33,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
 document.getElementById("search").addEventListener("keyup", function(event) {
     if (event.key === "Enter") {
         filterNames();
     }
-  });
+});
+
 
 async function loadMore() {
     if (maxPoke <= 497) {
@@ -47,7 +50,9 @@ async function loadMore() {
             let responseMore = await fetch(url);
             PokeData = await responseMore.json();
             loadPokemon(PokeData, m);
+        
         }
+        removeAllPokeArrow();
     }
 }
 
@@ -69,8 +74,6 @@ function hidePokeContent(i) {
 
 function loadPokemon(responseAsJason, j) {
     document.getElementById('pokedex-container').innerHTML += pokemonBigContainer(responseAsJason, j);
-    firstPokeArrow(j);
-    lastPokeArrow(j);
     document.getElementById(`infoHeader${j}`).innerHTML = pokemonBigInfoHeader(j);
     document.getElementById('pokedex').innerHTML += pokemonSmallContainer(responseAsJason, j);
     document.getElementById(`pokeNumber${j}`).innerHTML = convertPokeNumer(responseAsJason);
@@ -81,12 +84,16 @@ function loadPokemon(responseAsJason, j) {
     fetchEvolution(responseAsJason, j);
     cardColor(j);
     pushPokeSmallInnerHTML(j);
+    firstPokeArrow(j);
+    lastPokeArrow(j);
 }
+
 
 function pushPokeSmallInnerHTML(index) {
     let pokemon = document.getElementById(`pokeContentSmall${index}`).innerHTML;
     PokeSmallInnerHTML.push(pokemon);
 }
+
 
 function filterClose() {
     let search = document.getElementById('search').value;
@@ -136,6 +143,7 @@ function showPokeBigCard(index) {
     document.getElementById(`pokeContent${index}`).classList.remove('d-none');
 }
 
+
 function closePokeBigCard() {
     hideAllpokeContent();
     document.getElementById('pokedex').classList.remove('d-none');
@@ -156,11 +164,23 @@ function nextCountDown(index) {
     document.getElementById(`pokeContent${index}`).classList.remove('d-none');  
 }
 
+
 function firstPokeArrow(index) {
     if (index == 1) {
         document.getElementById(`leftNextButton${index}`).classList.add('d-none');
     }
 }
+
+
+function removeAllPokeArrow() {
+    for (let index = 1; index < maxPoke; index++) {
+        let rightNextButton = document.getElementById(`rightNextButton${index}`);
+        if (rightNextButton.classList.contains('d-none')) {
+            rightNextButton.classList.remove('d-none');
+        }
+    }
+}
+
 
 function lastPokeArrow(index) {
     if (index === maxPoke) {

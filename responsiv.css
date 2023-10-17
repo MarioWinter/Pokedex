@@ -1,0 +1,73 @@
+@media(max-width: 680px){
+    .menu-bar {
+        display: flex;
+    }
+
+    .search {
+        position: static;
+    }
+
+    .input {
+        margin: 0 20px;
+    }
+
+}
+
+
+
+@media(max-width: 455px){
+    .input {
+        width: 150px;
+        height: 30px;
+        background-position: 6px 5px;
+        font-size: 15px;
+        background-size: 19px;
+        text-indent: 30px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+}
+
+@media(max-width: 320px){
+    .menu-bar {
+        height: 124px;
+        margin-bottom: 0;
+        padding: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .search {
+        height: auto;
+        width: auto;
+    }
+
+    .pokedex-container {
+        padding-top: 133px;
+
+    }
+}
+
+@media(max-height: 670px){
+    .pokedex-content {
+        height: 500px;
+    }
+
+
+    .pokedex-header {
+        height: 46%;
+    }
+    
+
+    #pokemon-info {
+        height: 55%;
+    }
+
+    .movesContent {
+        height: 70%;
+    }
+
+}

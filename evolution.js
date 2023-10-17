@@ -1,15 +1,20 @@
 
 let evolutionsChains = [];
+let chain = 0;
 
 async function fetchEvolution(responseAsJason, j) {
     let name = responseAsJason['name'];
-    // name = "pidgeotto"
-    for (let d = 1; d <= 19; d++) {
-        // d = 6
+    //name = "Kangaskhan"
+    for (let d = 1; d <= 209; d++) {
+        //d = 53
+        //chain = d;
         let url = `https://pokeapi.co/api/v2/evolution-chain/${d}/`;
         let responseTrigger = await fetch(url);
         let evolutionData = await responseTrigger.json();
 
+        if (evolutionData['chain']['evolves_to'].length === 0){
+            continue;
+        }
         let evo3 = evolution3(evolutionData, name);
         let evo1 = evolution1(evolutionData, name);
         let evo2 = evolution2(evolutionData, name);
@@ -47,8 +52,8 @@ function getEvolutionIDs(evo1, evo2, evo3, evolutionData, j) {
 }
 
 function AddTwoEvolutions(PokeID1, PokeID2, j) {
-    let img1 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${PokeID1}.svg`;
-    let img2 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${PokeID2}.svg`;
+    let img1 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${PokeID1}.png`;
+    let img2 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${PokeID2}.png`;
     let infoContainerEvolution = document.getElementById(`infoContainerEvolution${j}`);
     infoContainerEvolution.innerHTML = `
         
@@ -71,9 +76,9 @@ function AddTwoEvolutions(PokeID1, PokeID2, j) {
 
 
 function AddThreeEvolutions(PokeID1, PokeID2, PokeID3, j) {
-    let img1 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${PokeID1}.svg`;
-    let img2 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${PokeID2}.svg`;
-    let img3 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${PokeID3}.svg`;
+    let img1 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${PokeID1}.png`;
+    let img2 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${PokeID2}.png`;
+    let img3 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${PokeID3}.png`;
 
     let infoContainerEvolution = document.getElementById(`infoContainerEvolution${j}`);
     infoContainerEvolution.innerHTML = `
@@ -107,7 +112,7 @@ function AddThreeEvolutions(PokeID1, PokeID2, PokeID3, j) {
 function evolution1(evolutionData, name) {
     let evoName1 = evolutionData['chain']['species']['name'];
     if (evoName1 === name) {
-        console.log('Evolution 1: ' + evoName1);
+        //console.log('Evolution 1: ' + evoName1 + ", Chain: " + chain);
         return true;
     } else {
         return false;
@@ -116,9 +121,9 @@ function evolution1(evolutionData, name) {
 
 
 function evolution2(evolutionData, name) {
-
     let evoName2 = ""
     let evolvesTo = evolutionData['chain']['evolves_to'];
+
     if (evolvesTo.length > 0) {
         evoName2 = evolutionData['chain']['evolves_to'][0]['species']['name'];
     } else {
@@ -126,7 +131,7 @@ function evolution2(evolutionData, name) {
     }
     
     if (evoName2 === name) {
-        console.log('Evolution 2: ' + evoName2);
+        //console.log('Evolution 2: ' + evoName2 + ", Chain: " + chain);
         return true;
     } else {
         return false;
@@ -135,9 +140,17 @@ function evolution2(evolutionData, name) {
 
 
 function evolution3(evolutionData, name) {
+    let evolvesTo = "";
+    let evoName3 = "";
 
-    let evoName3 = ""
-    let evolvesTo = evolutionData['chain']['evolves_to'][0]['evolves_to'];
+    if (typeof evolutionData['chain']['evolves_to'][0] === "undefined") {
+        return 'nothing';
+    } else if (typeof evolutionData['chain']['evolves_to'][0]['evolves_to'] === "undefined") {
+        return 'nothing';
+    } else {
+        evolvesTo = evolutionData['chain']['evolves_to'][0]['evolves_to'];
+    }
+
     if (evolvesTo.length > 0) {
         evoName3 = evolutionData['chain']['evolves_to'][0]['evolves_to'][0]['species']['name'];
     } else {
@@ -149,7 +162,7 @@ function evolution3(evolutionData, name) {
     }
 
     if (evoName3 === name) {
-        console.log('Evolution 3: ' + evoName3);
+        //console.log('Evolution 3: ' + evoName3 + ", Chain: " + chain);
         return true;
     } else {
         return false;

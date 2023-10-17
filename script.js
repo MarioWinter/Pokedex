@@ -101,7 +101,7 @@ function filterClose() {
 
     let pokedex = document.getElementById('pokedex');
     
-    if (search.length == 1) {
+    if (search.length == 1 || search.length == "") {
         pokedex.innerHTML = '';
         for (let index = 1; index <= PokeSmallInnerHTML.length; index++) {
             --index;
@@ -120,7 +120,7 @@ function filterNames() {
     search = search.toLowerCase();
 
     let pokedex = document.getElementById('pokedex');
-    if(search.length >= 3) {
+    if(search.length >= 1) {
         pokedex.innerHTML = '';
         for (let index = 1; index <= PokeSmallInnerHTML.length; index++) {
             --index;
@@ -372,6 +372,12 @@ function cardColor(index) {
     } else if (mainType == "ghost") {
         document.getElementById(`pokeContent${index}`).classList.add('card-ghost');
         document.getElementById(`pokeContentSmall${index}`).classList.add('card-ghost');
+    } else if (mainType == "dark") {
+        document.getElementById(`pokeContent${index}`).classList.add('card-dark');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-dark');
+    } else if (mainType == "steel") {
+        document.getElementById(`pokeContent${index}`).classList.add('card-steel');
+        document.getElementById(`pokeContentSmall${index}`).classList.add('card-steel');
     }
 }
 

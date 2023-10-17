@@ -326,6 +326,14 @@ body{
     background-color: rgb(99,60,100);
 }
 
+.card-dark {
+    background-color: rgb(70,62,62);
+}
+
+.card-steel {
+    background-color: rgb(153,153,168);
+}
+
 .info-header-container {
     color: var(--text-grey);
     display: flex;

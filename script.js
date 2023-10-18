@@ -139,6 +139,7 @@ function filterNames() {
 
 function showPokeBigCard(index) {
     document.getElementById('pokedex').classList.add('d-none');
+    document.getElementById('footer-load-more').classList.add('d-none');
     document.getElementById('pokedex-container').classList.remove('d-none');
     document.getElementById(`pokeContent${index}`).classList.remove('d-none');
 }
@@ -147,6 +148,7 @@ function showPokeBigCard(index) {
 function closePokeBigCard() {
     hideAllpokeContent();
     document.getElementById('pokedex').classList.remove('d-none');
+    document.getElementById('footer-load-more').classList.remove('d-none');
     document.getElementById('pokedex-container').classList.add('d-none');
 }
 

@@ -86,6 +86,7 @@ function loadPokemon(responseAsJason, j) {
     pushPokeSmallInnerHTML(j);
     firstPokeArrow(j);
     lastPokeArrow(j);
+    document.getElementById(`pokeContentSmall${j}`).style.opacity = "1";
 }
 
 

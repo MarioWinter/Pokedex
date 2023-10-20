@@ -127,7 +127,7 @@ function infoContentMoves(move) {
 function pokemonSmallContainer(responseAsJason, index) {
     let name = capitalizeFirstLetter(responseAsJason['name']);
     return `
-    <div id="pokeContentSmall${index}" class="pokedex-content-small" onclick="doNotClose(event), showPokeBigCard(${index})" onmouseover="pokeImgSizeUp(${index})" onmouseout="pokeImgSizeDown(${index})">
+    <div id="pokeContentSmall${index}" class="pokedex-content-small" onclick="doNotClose(event), showPokeBigCard(${index})" onmouseover="pokeImgSizeUp(${index})" onmouseout="pokeImgSizeDown(${index})" style="opacity: 0;">
         <div class="pokedex-header-small">
             <div class="d-flex-between">
                 <div>

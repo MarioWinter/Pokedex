@@ -238,8 +238,8 @@ body{
 .d-none { 
     /* display: none !important; */
     opacity: 0 !important;
-    height: 2px !important;
-    width: 2px !important;
+    /* height: 2px !important;
+    width: 2px !important; */
     position: absolute !important;
     z-index: -100 !important;
     flex-wrap: nowrap !important;

@@ -4,6 +4,7 @@ let PokeData = "";
 let m = "";
 let maxPoke = 47;
 let PokeSmallInnerHTML = [];
+let ID = "";
 
 
 async function loadAllPokemonData() {
@@ -13,7 +14,7 @@ async function loadAllPokemonData() {
         let url = `https://pokeapi.co/api/v2/pokemon/${m}/`;
         let response = await fetch(url);
         PokeData = await response.json();
-        loadPokemon(PokeData, m);
+        loadPokemonTemplates(PokeData, m);
     }
     
 }
@@ -31,17 +32,16 @@ document.addEventListener('DOMContentLoaded', function() {
             closePokeBigCard();
         }
     });
+
+    document.getElementById("search").addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            filterNames();
+        }
+    });
 });
 
 
-document.getElementById("search").addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
-        filterNames();
-    }
-});
-
-
-async function loadMore() {
+async function loadMorePokemon() {
     if (maxPoke <= 497) {
         maxPoke = maxPoke + 50;
     
@@ -49,7 +49,7 @@ async function loadMore() {
             let url = `https://pokeapi.co/api/v2/pokemon/${m}/`;
             let responseMore = await fetch(url);
             PokeData = await responseMore.json();
-            loadPokemon(PokeData, m);
+            loadPokemonTemplates(PokeData, m);
         
         }
         removeAllPokeArrow();
@@ -61,32 +61,33 @@ function doNotClose(event) {
     event.stopPropagation();
 }
 
-function hideAllpokeContent() {
-    for (let i = 1; i <= maxPoke; i++) {
-        document.getElementById(`pokeContent${i}`).classList.add('d-none');  
-    }
-}
 
-function hidePokeContent(i) {
-    document.getElementById(`pokeContent${i}`).classList.add('d-none'); 
+function hidePokeContent(ID) {
+     document.getElementById(`pokeContent${ID}`).classList.add('d-none'); 
 }
 
 
-function loadPokemon(responseAsJason, j) {
+function loadPokemonTemplates(responseAsJason, j) {
     document.getElementById('pokedex-container').innerHTML += pokemonBigContainer(responseAsJason, j);
     document.getElementById(`infoHeader${j}`).innerHTML = pokemonBigInfoHeader(j);
     document.getElementById('pokedex').innerHTML += pokemonSmallContainer(responseAsJason, j);
     document.getElementById(`pokeNumber${j}`).innerHTML = convertPokeNumer(responseAsJason);
     document.getElementById(`pokeNumberSmall${j}`).innerHTML = convertPokeNumer(responseAsJason);
+    loadPokemonCardInnerContent(responseAsJason, j);
+    document.getElementById(`pokeContentSmall${j}`).style.opacity = "1";
+}
+
+
+function loadPokemonCardInnerContent(responseAsJason, j) {
     pokemonTypes(responseAsJason, j);
     pokeMenuSelection(responseAsJason, j);
     pokemonAbilities(responseAsJason, j);
+    renderBestStats(j);
     fetchEvolution(responseAsJason, j);
-    cardColor(j);
+    addCardColors(j);
     pushPokeSmallInnerHTML(j);
     firstPokeArrow(j);
     lastPokeArrow(j);
-    document.getElementById(`pokeContentSmall${j}`).style.opacity = "1";
 }
 
 
@@ -102,7 +103,7 @@ function filterClose() {
 
     let pokedex = document.getElementById('pokedex');
     
-    if (search.length == 1 || search.length == "") {
+    if (search.length == 0) {
         pokedex.innerHTML = '';
         for (let index = 1; index <= PokeSmallInnerHTML.length; index++) {
             --index;
@@ -110,7 +111,7 @@ function filterClose() {
             ++index;
             pokedex.innerHTML += 
                 `<div id="pokeContentSmall${index}" class="pokedex-content-small" onclick="doNotClose(event), showPokeBigCard(${index})">${pokemon}<div>`;
-            cardColor(index);
+            addCardColors(index);
         } 
     }
 }
@@ -131,7 +132,7 @@ function filterNames() {
 
                 pokedex.innerHTML += 
                 `<div id="pokeContentSmall${index}" class="pokedex-content-small" onclick="doNotClose(event), showPokeBigCard(${index})">${pokemon}<div>`;
-                cardColor(index);
+                addCardColors(index);
             }
         }
     }
@@ -139,6 +140,7 @@ function filterNames() {
 
 
 function showPokeBigCard(index) {
+    ID = index;
     document.getElementById('pokedex').classList.add('d-none');
     document.getElementById('footer-load-more').classList.add('d-none');
     document.getElementById('pokedex-container').classList.remove('d-none');
@@ -147,7 +149,7 @@ function showPokeBigCard(index) {
 
 
 function closePokeBigCard() {
-    hideAllpokeContent();
+    hidePokeContent(ID);
     document.getElementById('pokedex').classList.remove('d-none');
     document.getElementById('footer-load-more').classList.remove('d-none');
     document.getElementById('pokedex-container').classList.add('d-none');
@@ -158,13 +160,15 @@ function nextCountUp(index) {
     document.getElementById(`pokeContent${index}`).classList.add('d-none');
     ++index
     document.getElementById(`pokeContent${index}`).classList.remove('d-none');
+    ID = index;
 }
 
 
 function nextCountDown(index) {
     document.getElementById(`pokeContent${index}`).classList.add('d-none');
     --index
-    document.getElementById(`pokeContent${index}`).classList.remove('d-none');  
+    document.getElementById(`pokeContent${index}`).classList.remove('d-none');
+    ID = index;
 }
 
 
@@ -249,7 +253,6 @@ function showInfoAbout(index) {
 function showInfoBest_Stats(index) {
     removeInfoContainer(index);
     document.getElementById(`infoContainerBest_Stats${index}`).classList.remove('d-none');
-    bestStats(index);
 }
 
 
@@ -280,7 +283,7 @@ function pokeMenuSelection(responseAsJason, j) {
 }
 
 
-async function bestStats(j) {
+async function renderBestStats(j) {
     let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
     let response = await fetch(url);
     responseAsJason = await response.json();
@@ -327,60 +330,13 @@ function convertPokeNumer(responseAsJason) {
 }
 
 
-function cardColor(index) {
+function addCardColors(index) {
     let mainType = document.getElementById(`mainType${index}`).innerHTML;
-
-    if (mainType == "grass") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-grass');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-grass');
-    } else if (mainType == "fire") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-fire');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-fire');
-    } else if (mainType == "psychic") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-psychic');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-psychic');
-    } else if (mainType == "electric") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-electric');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-electric');
-    } else if (mainType == "dragon") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-dragon');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-dragon');
-    } else if (mainType == "ice") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-ice');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-ice');
-    } else if (mainType == "normal") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-normal');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-normal');
-    } else if (mainType == "water") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-water');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-water');
-    } else if (mainType == "bug") {
-       document.getElementById(`pokeContent${index}`).classList.add('card-bug');
-       document.getElementById(`pokeContentSmall${index}`).classList.add('card-bug');
-    } else if (mainType == "poison") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-poison');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-poison');
-    } else if (mainType == "ground") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-ground');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-ground');
-    } else if (mainType == "fairy") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-fairy');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-fairy');
-    } else if (mainType == "fighting") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-fighting');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-fighting');
-    } else if (mainType == "rock") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-rock');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-rock');
-    } else if (mainType == "ghost") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-ghost');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-ghost');
-    } else if (mainType == "dark") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-dark');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-dark');
-    } else if (mainType == "steel") {
-        document.getElementById(`pokeContent${index}`).classList.add('card-steel');
-        document.getElementById(`pokeContentSmall${index}`).classList.add('card-steel');
+    for (let i = 0; i < types.length; i++) {
+        if (mainType == types[i]) {
+            document.getElementById(`pokeContent${index}`).classList.add(cardBackgroundColors[i]);
+            document.getElementById(`pokeContentSmall${index}`).classList.add(cardBackgroundColors[i]);
+        }
     }
 }
 

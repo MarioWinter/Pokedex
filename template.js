@@ -1,3 +1,43 @@
+const cardBackgroundColors = [
+    'card-grass',
+    'card-fire',
+    'card-psychic',
+    'card-electric',
+    'card-dragon',
+    'card-ice',
+    'card-normal',
+    'card-water',
+    'card-bug',
+    'card-poison',
+    'card-ground',
+    'card-fairy',
+    'card-fighting',
+    'card-rock',
+    'card-ghost',
+    'card-dark',
+    'card-steel'
+];
+
+const types = [
+    'grass',
+    'fire',
+    'psychic',
+    'electric',
+    'dragon',
+    'ice',
+    'normal',
+    'water',
+    'bug',
+    'poison',
+    'ground',
+    'fairy',
+    'fighting',
+    'rock',
+    'ghost',
+    'dark',
+    'steel'
+];
+
 function pokemonBigContainer(responseAsJason, index) {
     let name = capitalizeFirstLetter(responseAsJason['name']);
     return `

@@ -1,4 +1,5 @@
 let isLiked = false;
+let isLoading = false;
 let j = "";
 let PokeData = "";
 let maxPoke = 47;
@@ -8,14 +9,14 @@ let ID = "";
 
 async function loadAllPokemonData() {
     PokeSmallInnerHTML = [];
-    
+    showSpinner();
     for (j = 1; j <= maxPoke; j++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
         let response = await fetch(url);
         PokeData = await response.json();
         loadPokemonTemplates(PokeData, j);
     }
-    
+    hideSpinner();
 }
 
 
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 async function loadMorePokemon() {
+    showSpinner();
     if (maxPoke <= 497) {
         maxPoke = maxPoke + 50;
     
@@ -53,6 +55,7 @@ async function loadMorePokemon() {
         }
         removeAllPokeArrow();
     }
+    hideSpinner();
 }
 
 
@@ -353,3 +356,22 @@ function pokeImgSizeDown(index) {
     document.getElementById(pokemonImage).style.height = "100px";
 }
 
+// SPINNER
+let spinner = document.getElementById('spinner');
+let loadMoreBtn = document.getElementById('footer-load-more');
+
+
+function showSpinner() {
+    isLoading = true;
+    loadMoreBtn.classList.add('d-none');
+    spinner.classList.remove('d-none');
+    document.body.style.overflow = 'hidden';
+}
+
+
+function hideSpinner() {
+    isLoading = false;
+    loadMoreBtn.classList.remove('d-none');
+    spinner.classList.add('d-none');
+    document.body.style.overflow = '';
+}

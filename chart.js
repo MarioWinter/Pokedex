@@ -1,4 +1,8 @@
 
+let allStatsValues = ['placeholder'];
+let allChats = ['placeholder'];
+let baseStatsChart
+
 function renderChart(pokemonStatsValues, j) {
     const canvas = document.getElementById(`myChart${j}`);
     const ctx = canvas.getContext('2d');
@@ -40,5 +44,8 @@ function renderChart(pokemonStatsValues, j) {
         },
     });
 }
+
+
+
 
 

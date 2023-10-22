@@ -1,7 +1,6 @@
 let isLiked = false;
 let j = "";
 let PokeData = "";
-let m = "";
 let maxPoke = 47;
 let PokeSmallInnerHTML = [];
 let ID = "";
@@ -10,11 +9,11 @@ let ID = "";
 async function loadAllPokemonData() {
     PokeSmallInnerHTML = [];
     
-    for (m = 1; m <= maxPoke; m++) {
-        let url = `https://pokeapi.co/api/v2/pokemon/${m}/`;
+    for (j = 1; j <= maxPoke; j++) {
+        let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
         let response = await fetch(url);
         PokeData = await response.json();
-        loadPokemonTemplates(PokeData, m);
+        loadPokemonTemplates(PokeData, j);
     }
     
 }
@@ -45,11 +44,11 @@ async function loadMorePokemon() {
     if (maxPoke <= 497) {
         maxPoke = maxPoke + 50;
     
-        for (;m <= maxPoke; m++) {
-            let url = `https://pokeapi.co/api/v2/pokemon/${m}/`;
+        for (;j <= maxPoke; j++) {
+            let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
             let responseMore = await fetch(url);
             PokeData = await responseMore.json();
-            loadPokemonTemplates(PokeData, m);
+            loadPokemonTemplates(PokeData, j);
         
         }
         removeAllPokeArrow();
@@ -63,7 +62,7 @@ function doNotClose(event) {
 
 
 function hidePokeContent(ID) {
-     document.getElementById(`pokeContent${ID}`).classList.add('d-none'); 
+     document.getElementById(`pokeContent${ID}`).classList.add('d-none');
 }
 
 
@@ -82,7 +81,7 @@ function loadPokemonCardInnerContent(responseAsJason, j) {
     pokemonTypes(responseAsJason, j);
     pokeMenuSelection(responseAsJason, j);
     pokemonAbilities(responseAsJason, j);
-    renderBestStats(j);
+    saveBestStats(responseAsJason);
     fetchEvolution(responseAsJason, j);
     addCardColors(j);
     pushPokeSmallInnerHTML(j);
@@ -91,8 +90,8 @@ function loadPokemonCardInnerContent(responseAsJason, j) {
 }
 
 
-function pushPokeSmallInnerHTML(index) {
-    let pokemon = document.getElementById(`pokeContentSmall${index}`).innerHTML;
+function pushPokeSmallInnerHTML(j) {
+    let pokemon = document.getElementById(`pokeContentSmall${j}`).innerHTML;
     PokeSmallInnerHTML.push(pokemon);
 }
 
@@ -156,7 +155,7 @@ function closePokeBigCard() {
 }
 
 
-function nextCountUp(index) {
+function nextPokemon(index) {
     document.getElementById(`pokeContent${index}`).classList.add('d-none');
     ++index
     document.getElementById(`pokeContent${index}`).classList.remove('d-none');
@@ -164,7 +163,7 @@ function nextCountUp(index) {
 }
 
 
-function nextCountDown(index) {
+function previousPokemon(index) {
     document.getElementById(`pokeContent${index}`).classList.add('d-none');
     --index
     document.getElementById(`pokeContent${index}`).classList.remove('d-none');
@@ -253,6 +252,9 @@ function showInfoAbout(index) {
 function showInfoBest_Stats(index) {
     removeInfoContainer(index);
     document.getElementById(`infoContainerBest_Stats${index}`).classList.remove('d-none');
+    document.getElementById(`infoContainerBest_Stats${index}`).innerHTML = addCanversChart(index);
+    let StatsValues = allStatsValues[index];
+    renderChart(StatsValues, index);
 }
 
 
@@ -283,20 +285,14 @@ function pokeMenuSelection(responseAsJason, j) {
 }
 
 
-async function renderBestStats(j) {
-    let url = `https://pokeapi.co/api/v2/pokemon/${j}/`;
-    let response = await fetch(url);
-    responseAsJason = await response.json();
-
+function saveBestStats(responseAsJason) {
     let pokemonStatsValues = [];
     for (let i = 0; i < responseAsJason['stats'].length; i++) {
         let stats = responseAsJason['stats'][i];
-        let statsValues = stats['base_stat'];
-        pokemonStatsValues.push(statsValues);
+        let statsValue = stats['base_stat'];
+        pokemonStatsValues.push(statsValue);
     }
-    document.getElementById(`infoContainerBest_Stats${j}`).innerHTML = addCanversChart(j);
-    renderChart(pokemonStatsValues, j);
-
+    allStatsValues.push(pokemonStatsValues);
 }
 
 

@@ -237,9 +237,8 @@ body{
 
 .d-none { 
     /* display: none !important; */
+
     opacity: 0 !important;
-    /* height: 2px !important;
-    width: 2px !important; */
     position: absolute !important;
     z-index: -100 !important;
     flex-wrap: nowrap !important;
@@ -522,6 +521,7 @@ input[type=text]:focus{
     position: relative;
     width: 100%; /* Oder die gewünschte Breite */
     height: 245px; /* Oder die gewünschte Höhe */
+    opacity: 1;
 }
 
 .chart {

@@ -236,13 +236,13 @@ body{
 
 
 .d-none { 
-    /* display: none !important; */
+    display: none !important;
 
-    opacity: 0 !important;
+    /* opacity: 0 !important;
     position: absolute !important;
     z-index: -100 !important;
     flex-wrap: nowrap !important;
-    overflow: hidden !important;
+    overflow: hidden !important; */
 } 
 
 

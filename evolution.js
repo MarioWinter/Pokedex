@@ -1,25 +1,20 @@
-
-let evolutionsChains = [];
-let chain = 0;
-
 async function fetchEvolution(responseAsJason, j) {
     let name = responseAsJason['name'];
-    //name = "Kangaskhan"
+
     for (let d = 1; d <= 209; d++) {
-        //d = 53
-        //chain = d;
+
         let url = `https://pokeapi.co/api/v2/evolution-chain/${d}/`;
-        let responseTrigger = await fetch(url);
-        let evolutionData = await responseTrigger.json();
+        let responseData = await fetch(url);
+        let evolutionData = await responseData.json();
 
         if (evolutionData['chain']['evolves_to'].length === 0){
             continue;
         }
-        let evo3 = evolution3(evolutionData, name);
-        let evo1 = evolution1(evolutionData, name);
-        let evo2 = evolution2(evolutionData, name);
-        if (evo1 || evo2 || evo3 !== false) {
-            getEvolutionIDs(evo1, evo2, evo3, evolutionData, j);
+        let foundEvolution3 = checkEvolution3(evolutionData, name);
+        let foundEvolution1 = checkEvolution1(evolutionData, name);
+        let foundEvolution2 = checkEvolution2(evolutionData, name);
+        if (foundEvolution1 || foundEvolution2 || foundEvolution3 !== false) {
+            getEvolutionIDs(foundEvolution1, foundEvolution2, foundEvolution3, evolutionData, j);
         } else {
             continue;
         }
@@ -27,18 +22,16 @@ async function fetchEvolution(responseAsJason, j) {
 }
 
 
+function getEvolutionIDs(foundEvolution1, foundEvolution2, foundEvolution3, evolutionData, j) {
 
-
-function getEvolutionIDs(evo1, evo2, evo3, evolutionData, j) {
-
-    if (evo1 == true && evo3 === "nothing" || evo2 == true && evo3 === "nothing") {
+    if (foundEvolution1 == true && foundEvolution3 === "nothing" || foundEvolution2 == true && foundEvolution3 === "nothing") {
         let species1 = evolutionData['chain']['species']['url'].replace('https://pokeapi.co/api/v2/pokemon-species/', '');
         let species2 = evolutionData['chain']['evolves_to'][0]['species']['url'].replace('https://pokeapi.co/api/v2/pokemon-species/', '');
         let PokeID1 = species1.replace('/', '');
         let PokeID2 = species2.replace('/', '');
         AddTwoEvolutions(PokeID1, PokeID2, j);
 
-    } else if (evo1 == true || evo2 == true || evo3 == true) {
+    } else if (foundEvolution1 == true || foundEvolution2 == true || foundEvolution3 == true) {
         let species1 = evolutionData['chain']['species']['url'].replace('https://pokeapi.co/api/v2/pokemon-species/', '');
         let species2 = evolutionData['chain']['evolves_to'][0]['species']['url'].replace('https://pokeapi.co/api/v2/pokemon-species/', '');
         let species3 = evolutionData['chain']['evolves_to'][0]['evolves_to'][0]['species']['url'].replace('https://pokeapi.co/api/v2/pokemon-species/', '');
@@ -50,6 +43,7 @@ function getEvolutionIDs(evo1, evo2, evo3, evolutionData, j) {
 
     } 
 }
+
 
 function AddTwoEvolutions(PokeID1, PokeID2, j) {
     let img1 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${PokeID1}.png`;
@@ -109,10 +103,10 @@ function AddThreeEvolutions(PokeID1, PokeID2, PokeID3, j) {
 }
 
 
-function evolution1(evolutionData, name) {
+function checkEvolution1(evolutionData, name) {
     let evoName1 = evolutionData['chain']['species']['name'];
     if (evoName1 === name) {
-        //console.log('Evolution 1: ' + evoName1 + ", Chain: " + chain);
+        
         return true;
     } else {
         return false;
@@ -120,7 +114,7 @@ function evolution1(evolutionData, name) {
 }
 
 
-function evolution2(evolutionData, name) {
+function checkEvolution2(evolutionData, name) {
     let evoName2 = ""
     let evolvesTo = evolutionData['chain']['evolves_to'];
 
@@ -131,7 +125,7 @@ function evolution2(evolutionData, name) {
     }
     
     if (evoName2 === name) {
-        //console.log('Evolution 2: ' + evoName2 + ", Chain: " + chain);
+        
         return true;
     } else {
         return false;
@@ -139,7 +133,7 @@ function evolution2(evolutionData, name) {
 }
 
 
-function evolution3(evolutionData, name) {
+function checkEvolution3(evolutionData, name) {
     let evolvesTo = "";
     let evoName3 = "";
 
@@ -162,7 +156,7 @@ function evolution3(evolutionData, name) {
     }
 
     if (evoName3 === name) {
-        //console.log('Evolution 3: ' + evoName3 + ", Chain: " + chain);
+        
         return true;
     } else {
         return false;

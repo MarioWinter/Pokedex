@@ -11,7 +11,6 @@
     --primary-grey: rgba(210, 210, 210, 0.5);
 }
 
-
 body{
     background-color: rgb(247,248,252);
     background-image: url("./img/pokedex_backround.svg");
@@ -21,7 +20,6 @@ body{
     background-attachment: fixed;
     width: 100%;
 }
-  
 
 .edit-bg {
     background-color: rgba(0, 0, 0, 0.1);
@@ -35,11 +33,9 @@ body{
     backdrop-filter: blur(2px);
 }
 
-
 .pokedex {
     color: white;
 }
-
 
 .pokedex-container {
     display: flex;
@@ -49,7 +45,6 @@ body{
     padding: 100px 20px 0px 20px;
     opacity: 1;
 }
-
 
 .center-position {
     display: flex;
@@ -63,7 +58,6 @@ body{
     width: 100%;
     backdrop-filter: blur(2px);
 }
-
 
 .pokedex-content-bkrlogo {
     bottom: 2px;
@@ -80,7 +74,6 @@ body{
     position: absolute;
 }
 
-
 .pokedex-content {
     border-radius: 20px;
     width: var(--big-crad-witdh);
@@ -91,7 +84,6 @@ body{
     border: 1px solid rgba(0, 0, 0, 0.1);
     opacity: 1;
 }
-
 
 .pokedex-content-small {
     border-radius: 20px;
@@ -114,7 +106,6 @@ body{
     
 }
 
-
 .pokedex-header {
     padding: 10px;
     height: 40%;
@@ -128,7 +119,6 @@ body{
     color: white;
     position: relative;
 }
-
 
 #pokemon-info {
     padding: 10px;
@@ -158,27 +148,22 @@ body{
     margin-right: 20px;
 }
 
-
 .pokemon-img-big {
     height: 135px;
 }
-
 
 .pokemon-img-small {
     height: 100px;
     transition: height 75ms ease-in-out;
 }
 
-
 .pokemon-img-pocket {
     height: 80px;
 }
 
-
 .pokemon-img-pocket2 {
     height: 60px;
 }
-
 
 .next-like-button-container {
     display: flex;
@@ -186,7 +171,6 @@ body{
     align-items: center;
     height: 30px;
 }
-
 
 .menu-bar {
     color: white;
@@ -216,12 +200,10 @@ body{
     top: 0;
 }
 
-
 .type-container {
     height: 15px;
     margin-top: 10px;
 }
-
 
 .pokemon-type {
     padding: 5px 10px;
@@ -234,24 +216,13 @@ body{
     text-align: center;
 }
 
-
 .d-none { 
     display: none !important;
-
-    /* opacity: 0 !important;
-    position: absolute !important;
-    z-index: -100 !important;
-    flex-wrap: nowrap !important;
-    overflow: hidden !important; */
 } 
-
-
-
 
 .clicked {
     fill: white;
 }
-
 
 .d-flex-between {
     display: flex;
@@ -259,16 +230,13 @@ body{
     align-items: center;
 }
 
-
 .card-grass {
     background-color: rgb(72,208,175);
 }
 
-
 .card-fire {
     background-color: rgb(251,108,108);
 }
-
 
 .card-water {
     background-color: rgb(117,189,253);
@@ -346,12 +314,10 @@ body{
     color: var(--text-grey);
 }
 
-
 .info-header-menu:hover {
     padding-bottom: 10px;
     color: black;
 }
-
 
 .info-header-selected {
     padding-bottom: 10px;
@@ -391,6 +357,8 @@ body{
     border-radius: 15px;
     background-color: rgba(255, 149, 0, 0.2);
     text-align: center;
+    height: 30px;
+    min-width: 50px;
 }
 
 .movesContent {
@@ -409,11 +377,9 @@ body{
     width: 30px;
 }
 
-
 .button-effect:hover {
     background-color: rgba(0, 0, 0, 0.2);
 }
-
 
 .mt-10 {
     margin-top: 10px;
@@ -450,28 +416,26 @@ footer {
 .load-more {
     background-color: transparent;
     color: rgb(215,31,55);
-    border: 2px solid rgb(215,31,55); /* Lila Rand */
+    border: 2px solid rgb(215,31,55);
     border-radius: 10px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 125ms ease-in-out, box-shadow 125ms ease-in-out; /* Übergangseffekte für Rand und Schatten */
+    transition: background-color 125ms ease-in-out, box-shadow 125ms ease-in-out;
     
-    /* Leichter Glow-Effekt (Innenschatten) */
+   
     box-shadow: inset 0 0 10px rgba(215,31,55, 0.7);
 }
-  
+ 
 .load-more:hover {
-    background-color: rgb(215,31,55); /* Lila Hintergrund */
+    background-color: rgb(215,31,55);
     box-shadow: inset 0 0 6px rgba(255,255,255, 0.2);
     color: white;
 }
   
-  
 .load-more:focus {
-    outline: none; /* Entfernt den standardmäßigen Focus-Rahmen */
+    outline: none;
 }
-
 
 .input {
     border: 2px solid var(--primary-grey);
@@ -487,11 +451,9 @@ footer {
     text-indent: 37px;
 }
 
-
 input#search:focus {
     background-image: none;
 }
-
 
 input[type=text]:focus{
     outline: none;
@@ -506,7 +468,6 @@ input[type=text]:focus{
     font-weight: 700;
 }
 
-
 .pokeEvolutionHeader {
     display: flex;
     justify-content: space-between;
@@ -517,10 +478,10 @@ input[type=text]:focus{
 }
 
 .info-best-stats {
-    display: block; /* Oder andere sichtbare Anzeigeoptionen */
+    display: block;
     position: relative;
-    width: 100%; /* Oder die gewünschte Breite */
-    height: 245px; /* Oder die gewünschte Höhe */
+    width: 100%;
+    height: 245px;
     opacity: 1;
 }
 

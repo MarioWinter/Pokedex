@@ -1,7 +1,6 @@
 
 let allStatsValues = ['placeholder'];
-let allChats = ['placeholder'];
-let baseStatsChart
+
 
 function renderChart(pokemonStatsValues, j) {
     const canvas = document.getElementById(`myChart${j}`);
@@ -23,7 +22,7 @@ function renderChart(pokemonStatsValues, j) {
             indexAxis: 'y',
             scales: {
                 x: {
-                    display: false, // Verberge x-Achsenwerte
+                    display: false,
                 },
             },
             plugins: {
@@ -33,12 +32,12 @@ function renderChart(pokemonStatsValues, j) {
             },
             layout: {
                 padding: {
-                    left: 30, // Platz für Labels auf der linken Seite
+                    left: 30,
                 },
             },
             elements: {
                 bar: {
-                    borderWidth: 0.3, // Dünnerer Balken
+                    borderWidth: 0.3,
                 },
             },
         },

@@ -357,7 +357,7 @@ body{
     border-radius: 15px;
     background-color: rgba(255, 149, 0, 0.2);
     text-align: center;
-    height: 30px;
+    max-height: 25px;
     min-width: 50px;
 }
 

@@ -11,8 +11,8 @@
     --primary-grey: rgba(210, 210, 210, 0.5);
 }
 
-body{
-    background-color: rgb(247,248,252);
+body {
+	background-color: rgb(247,248,252);
     background-image: url("./img/pokedex_backround.svg");
     background-repeat: no-repeat;
     background-position: center;
@@ -103,7 +103,7 @@ body{
 .pokedex-content-small:hover {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
     border: 2px solid rgba(0, 0, 0, 0.3);
-    
+
 }
 
 .pokedex-header {
@@ -216,12 +216,12 @@ body{
     text-align: center;
 }
 
-.d-none { 
+.d-none {
     display: none !important;
-} 
+}
 
 .clicked {
-    fill: white;
+    fill: black;
 }
 
 .d-flex-between {
@@ -422,17 +422,17 @@ footer {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 125ms ease-in-out, box-shadow 125ms ease-in-out;
-    
-   
+
+
     box-shadow: inset 0 0 10px rgba(215,31,55, 0.7);
 }
- 
+
 .load-more:hover {
     background-color: rgb(215,31,55);
     box-shadow: inset 0 0 6px rgba(255,255,255, 0.2);
     color: white;
 }
-  
+
 .load-more:focus {
     outline: none;
 }
@@ -487,7 +487,7 @@ input[type=text]:focus{
 
 .chart {
     height: 245px;
-    width: 280px;  
+    width: 280px;
 }
 
 

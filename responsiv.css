@@ -13,8 +13,6 @@
 
 }
 
-
-
 @media(max-width: 455px){
     .input {
         width: 150px;
@@ -60,7 +58,7 @@
     .pokedex-header {
         height: 46%;
     }
-    
+
 
     #pokemon-info {
         height: 55%;

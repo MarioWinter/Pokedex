@@ -1,19 +1,19 @@
 * {
     box-sizing: border-box;
     margin: 0px;
-    font-family: 'Rubik';
+    font-family: "Rubik";
 }
 
 :root {
     --big-crad-witdh: 300px;
     --big-crad-heigt: 550px;
-    --text-grey: rgb(180,180,180);
+    --text-grey: rgb(180, 180, 180);
     --primary-grey: rgba(210, 210, 210, 0.5);
 }
 
 body {
-	background-color: rgb(247,248,252);
-    background-image: url("./img/pokedex_backround.svg");
+    background-color: rgb(247, 248, 252);
+    background-image: url(".assets/img/pokedex_backround.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -103,7 +103,6 @@ body {
 .pokedex-content-small:hover {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
     border: 2px solid rgba(0, 0, 0, 0.3);
-
 }
 
 .pokedex-header {
@@ -174,7 +173,7 @@ body {
 
 .menu-bar {
     color: white;
-    background-color: rgb(215,31,55);
+    background-color: rgb(215, 31, 55);
     height: 80px;
     width: 100%;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
@@ -231,19 +230,19 @@ body {
 }
 
 .card-grass {
-    background-color: rgb(72,208,175);
+    background-color: rgb(72, 208, 175);
 }
 
 .card-fire {
-    background-color: rgb(251,108,108);
+    background-color: rgb(251, 108, 108);
 }
 
 .card-water {
-    background-color: rgb(117,189,253);
+    background-color: rgb(117, 189, 253);
 }
 
 .card-electric {
-    background-color: rgb(255,215,111);
+    background-color: rgb(255, 215, 111);
 }
 
 .card-psychic {
@@ -251,51 +250,51 @@ body {
 }
 
 .card-dragon {
-    background-color: rgb(77,100,171);
+    background-color: rgb(77, 100, 171);
 }
 
 .card-ice {
-    background-color: rgb(104,186,172);
+    background-color: rgb(104, 186, 172);
 }
 
 .card-normal {
-    background-color: rgb(168,168,153);
+    background-color: rgb(168, 168, 153);
 }
 
 .card-bug {
-    background-color: rgb(131,173,37);
+    background-color: rgb(131, 173, 37);
 }
 
 .card-poison {
-    background-color: rgb(134,74,184);
+    background-color: rgb(134, 74, 184);
 }
 
 .card-ground {
-    background-color: rgb(149,104,51);
+    background-color: rgb(149, 104, 51);
 }
 
 .card-fairy {
-    background-color: rgb(212,128,207);
+    background-color: rgb(212, 128, 207);
 }
 
 .card-fighting {
-    background-color: rgb(168,76,61);
+    background-color: rgb(168, 76, 61);
 }
 
 .card-rock {
-    background-color: rgb(168,153,91);
+    background-color: rgb(168, 153, 91);
 }
 
 .card-ghost {
-    background-color: rgb(99,60,100);
+    background-color: rgb(99, 60, 100);
 }
 
 .card-dark {
-    background-color: rgb(70,62,62);
+    background-color: rgb(70, 62, 62);
 }
 
 .card-steel {
-    background-color: rgb(153,153,168);
+    background-color: rgb(153, 153, 168);
 }
 
 .info-header-container {
@@ -402,7 +401,7 @@ body {
 }
 
 .mr-30 {
-    margin-right: 30px
+    margin-right: 30px;
 }
 
 footer {
@@ -415,21 +414,20 @@ footer {
 
 .load-more {
     background-color: transparent;
-    color: rgb(215,31,55);
-    border: 2px solid rgb(215,31,55);
+    color: rgb(215, 31, 55);
+    border: 2px solid rgb(215, 31, 55);
     border-radius: 10px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 125ms ease-in-out, box-shadow 125ms ease-in-out;
 
-
-    box-shadow: inset 0 0 10px rgba(215,31,55, 0.7);
+    box-shadow: inset 0 0 10px rgba(215, 31, 55, 0.7);
 }
 
 .load-more:hover {
-    background-color: rgb(215,31,55);
-    box-shadow: inset 0 0 6px rgba(255,255,255, 0.2);
+    background-color: rgb(215, 31, 55);
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
     color: white;
 }
 
@@ -443,7 +441,7 @@ footer {
     font-size: 16px;
     width: 250px;
     height: 39px;
-    background-image: url(./icon/magnifying-glass-solid.svg);
+    background-image: url(.assets/icon/magnifying-glass-solid.svg);
     background-position: 12px 7px;
     background-color: white;
     background-size: 20px;
@@ -455,7 +453,7 @@ input#search:focus {
     background-image: none;
 }
 
-input[type=text]:focus{
+input[type="text"]:focus {
     outline: none;
 }
 
@@ -489,7 +487,3 @@ input[type=text]:focus{
     height: 245px;
     width: 280px;
 }
-
-
-
-

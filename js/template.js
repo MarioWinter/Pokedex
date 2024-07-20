@@ -1,55 +1,55 @@
 const cardBackgroundColors = [
-	"card-grass",
-	"card-fire",
-	"card-psychic",
-	"card-electric",
-	"card-dragon",
-	"card-ice",
-	"card-normal",
-	"card-water",
-	"card-bug",
-	"card-poison",
-	"card-ground",
-	"card-fairy",
-	"card-fighting",
-	"card-rock",
-	"card-ghost",
-	"card-dark",
-	"card-steel",
+    "card-grass",
+    "card-fire",
+    "card-psychic",
+    "card-electric",
+    "card-dragon",
+    "card-ice",
+    "card-normal",
+    "card-water",
+    "card-bug",
+    "card-poison",
+    "card-ground",
+    "card-fairy",
+    "card-fighting",
+    "card-rock",
+    "card-ghost",
+    "card-dark",
+    "card-steel",
 ];
 
 const types = [
-	"grass",
-	"fire",
-	"psychic",
-	"electric",
-	"dragon",
-	"ice",
-	"normal",
-	"water",
-	"bug",
-	"poison",
-	"ground",
-	"fairy",
-	"fighting",
-	"rock",
-	"ghost",
-	"dark",
-	"steel",
+    "grass",
+    "fire",
+    "psychic",
+    "electric",
+    "dragon",
+    "ice",
+    "normal",
+    "water",
+    "bug",
+    "poison",
+    "ground",
+    "fairy",
+    "fighting",
+    "rock",
+    "ghost",
+    "dark",
+    "steel",
 ];
 
 function pokemonBigContainer(responseAsJason, index) {
-	let name = capitalizeFirstLetter(responseAsJason["name"]);
-	return `
+    let name = capitalizeFirstLetter(responseAsJason["name"]);
+    return `
     <div id="pokeContent${index}" class="pokedex-content d-none" onclick="doNotClose(event)">
         <div class="pokedex-header">
             <div class="next-like-button-container">
                 <div>
-                    <img id="leftNextButton${index}" class="button-effect" onclick="previousPokemon(${index})" src="./icon/arrow-left-long-solid.svg" alt="Left Arrow Button">
+                    <img id="leftNextButton${index}" class="button-effect" onclick="previousPokemon(${index})" src=".assets/icon/arrow-left-long-solid.svg" alt="Left Arrow Button">
                     <div></div>
                 </div>
                 <div class="next-right-button">
-                    <img id="rightNextButton${index}" class="button-effect" onclick="nextPokemon(${index})" src="./icon/arrow-right-long-solid.svg" alt="Right Arrow Button">
+                    <img id="rightNextButton${index}" class="button-effect" onclick="nextPokemon(${index})" src=".assets/icon/arrow-right-long-solid.svg" alt="Right Arrow Button">
                     <svg class="button-effect" onclick="likeHandleClick(${index})" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="white" stroke-width="2" id="likeButton${index}">
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                     </svg>
@@ -66,7 +66,7 @@ function pokemonBigContainer(responseAsJason, index) {
             <div class="poke-img-container">
                 <img class="pokemon-img-big" src="${responseAsJason["sprites"]["other"]["dream_world"]["front_default"]}" alt="Pokemon Image">
             </div>
-            <img class="pokedex-content-bkrlogo" src="./img/pokedex_backround-logo.svg" alt="Backround-Logo">
+            <img class="pokedex-content-bkrlogo" src=".assets/img/pokedex_backround-logo.svg" alt="Backround-Logo">
         </div>
 
         <div id="pokemon-info">
@@ -99,7 +99,7 @@ function pokemonBigContainer(responseAsJason, index) {
 }
 
 function pokemonBigInfoHeader(index) {
-	return `
+    return `
         <div id="about${index}" onclick="addHeaderMenuSelection('about${index}', ${index}), showInfoAbout(${index})" class="info-header-menu info-header-selected">About</div>
         <div id="baseStats${index}" onclick="addHeaderMenuSelection('baseStats${index}', ${index}), showInfoBest_Stats(${index})" class="info-header-menu">Base Stats</div>
         <div id="evolution${index}" onclick="addHeaderMenuSelection('evolution${index}', ${index}), showInfoEvo(${index})" class="info-header-menu">Evolution</div>
@@ -108,18 +108,14 @@ function pokemonBigInfoHeader(index) {
 }
 
 function infoContentAbout(responseAsJason, index) {
-	return `
+    return `
     <div class="card-content">
         <span class=" card-info-key">Height</span>
-        <span class=" card-info-value">${fixWidth(
-			responseAsJason["height"]
-		)} m</span>
+        <span class=" card-info-value">${fixWidth(responseAsJason["height"])} m</span>
     </div>
     <div class="card-content">
         <span class="card-info-key">Weight</span>
-        <span class="card-info-value">${fixWidth(
-			responseAsJason["weight"]
-		)} Kg</span>
+        <span class="card-info-value">${fixWidth(responseAsJason["weight"])} Kg</span>
     </div>
     <div id=abilities${index} class="card-content">
         <span class="card-info-key">Abilities</span>
@@ -127,15 +123,13 @@ function infoContentAbout(responseAsJason, index) {
     </div>
     <div class="card-content">
         <span class="card-info-key">Experience</span>
-        <span class="card-info-value">${
-			responseAsJason["base_experience"]
-		}</span>
+        <span class="card-info-value">${responseAsJason["base_experience"]}</span>
     </div>
     `;
 }
 
 function infoContentBestStats(statsNames, statsValues, j) {
-	return `
+    return `
     <div class="card-content">
         <div class="card-info-key">${statsNames}</div>
         <div class="card-info-value">${statsValues}</div>
@@ -144,7 +138,7 @@ function infoContentBestStats(statsNames, statsValues, j) {
 }
 
 function addCanversChart(j) {
-	return `
+    return `
 
     <div class="info-best-stats">
         <canvas class="chart" id="myChart${j}"></canvas>
@@ -153,14 +147,14 @@ function addCanversChart(j) {
 }
 
 function infoContentMoves(move) {
-	return `
+    return `
     <span class="moves card-info-value">${capitalizeFirstLetter(move)}</span>
     `;
 }
 
 function pokemonSmallContainer(responseAsJason, index) {
-	let name = capitalizeFirstLetter(responseAsJason["name"]);
-	return `
+    let name = capitalizeFirstLetter(responseAsJason["name"]);
+    return `
     <div id="pokeContentSmall${index}" class="pokedex-content-small" onclick="doNotClose(event), showPokeBigCard(${index})" onmouseover="pokeImgSizeUp(${index})" onmouseout="pokeImgSizeDown(${index})" style="opacity: 0;">
         <div class="pokedex-header-small">
             <div class="d-flex-between">

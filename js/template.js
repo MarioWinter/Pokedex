@@ -45,11 +45,11 @@ function pokemonBigContainer(responseAsJason, index) {
         <div class="pokedex-header">
             <div class="next-like-button-container">
                 <div>
-                    <img id="leftNextButton${index}" class="button-effect" onclick="previousPokemon(${index})" src=".assets/icon/arrow-left-long-solid.svg" alt="Left Arrow Button">
+                    <img id="leftNextButton${index}" class="button-effect" onclick="previousPokemon(${index})" src="./assets/icon/arrow-left-long-solid.svg" alt="Left Arrow Button">
                     <div></div>
                 </div>
                 <div class="next-right-button">
-                    <img id="rightNextButton${index}" class="button-effect" onclick="nextPokemon(${index})" src=".assets/icon/arrow-right-long-solid.svg" alt="Right Arrow Button">
+                    <img id="rightNextButton${index}" class="button-effect" onclick="nextPokemon(${index})" src="./assets/icon/arrow-right-long-solid.svg" alt="Right Arrow Button">
                     <svg class="button-effect" onclick="likeHandleClick(${index})" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="white" stroke-width="2" id="likeButton${index}">
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                     </svg>
@@ -66,7 +66,7 @@ function pokemonBigContainer(responseAsJason, index) {
             <div class="poke-img-container">
                 <img class="pokemon-img-big" src="${responseAsJason["sprites"]["other"]["dream_world"]["front_default"]}" alt="Pokemon Image">
             </div>
-            <img class="pokedex-content-bkrlogo" src=".assets/img/pokedex_backround-logo.svg" alt="Backround-Logo">
+            <img class="pokedex-content-bkrlogo" src="./assets/img/pokedex_backround-logo.svg" alt="Backround-Logo">
         </div>
 
         <div id="pokemon-info">

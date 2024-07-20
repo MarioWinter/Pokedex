@@ -13,7 +13,7 @@
 
 body {
     background-color: rgb(247, 248, 252);
-    background-image: url(".assets/img/pokedex_backround.svg");
+    background-image: url("./assets/img/pokedex_backround.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -441,7 +441,7 @@ footer {
     font-size: 16px;
     width: 250px;
     height: 39px;
-    background-image: url(.assets/icon/magnifying-glass-solid.svg);
+    background-image: url(./assets/icon/magnifying-glass-solid.svg);
     background-position: 12px 7px;
     background-color: white;
     background-size: 20px;

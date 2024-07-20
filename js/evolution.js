@@ -53,7 +53,7 @@ function AddTwoEvolutions(PokeID1, PokeID2, j) {
         <div class="pokeEvolutionContainer">
             <img class="pokemon-img-pocket" src="${img1}" alt="Pokemon Evolution1">
 
-            <img width="20" height="20" src=".assets/icon/arrow-right-long-solid-black.svg" alt="Right Arrow">
+            <img width="20" height="20" src="./assets/icon/arrow-right-long-solid-black.svg" alt="Right Arrow">
 
             <img class="pokemon-img-pocket" src="${img2}" alt="Pokemon Evolution1">
         </div>
@@ -78,11 +78,11 @@ function AddThreeEvolutions(PokeID1, PokeID2, PokeID3, j) {
         <div class="pokeEvolutionContainer">
             <img class="pokemon-img-pocket2" src="${img1}" alt="Pokemon frist evolution">
 
-            <img width="20" height="20" src=".assets/icon/arrow-right-long-solid-black.svg" alt="Reight Arrow">
+            <img width="20" height="20" src="./assets/icon/arrow-right-long-solid-black.svg" alt="Reight Arrow">
 
             <img class="pokemon-img-pocket2" src="${img2}" alt="Pokemon second evolution">
 
-            <img width="20" height="20" src=".assets/icon/arrow-right-long-solid-black.svg" alt="Reight Arrow">
+            <img width="20" height="20" src="./assets/icon/arrow-right-long-solid-black.svg" alt="Reight Arrow">
 
             <img class="pokemon-img-pocket" src="${img3}" alt="Pokemon thrid evolution">
         </div>
